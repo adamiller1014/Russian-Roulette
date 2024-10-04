@@ -1,18 +1,18 @@
-import { useState } from 'react';
 import Icon from '../../../../shared/Icon';
 import CheckBox from '../../TipTabContent/Checkbox';
 
-const RiskStake = () => {
-  const [isLeft, setIsLeft] = useState(false);
+const RiskStake = ({ isChecked, setIsChecked }) => {
   return (
-    <div className="flex text-[#f8bf60]">
-      <CheckBox className="scale-[0.4] mt-[-3px]" isLeft={isLeft} setIsLeft={setIsLeft} />
-      <span className="flex flex-col justify-center">
-        <span className="flex flex-row items-center">
+    <div className="flex items-center">
+      <CheckBox isLeft={!isChecked} setIsLeft={(value) => setIsChecked(!value)} />
+      <div className={`flex flex-col ml-2 ${isChecked ? 'text-[#f8bf60]' : 'text-[#8b8b8b]'}`}>
+        <span className="flex items-center">
           <Icon name="dice" className="mr-[4px]" raw size={12} /> Risk Stake
         </span>
-        <>Stake is risked, but potential rewards are much greater.</>
-      </span>
+        <span className="text-xs">
+          Stake is risked, but potential rewards are much greater.
+        </span>
+      </div>
     </div>
   );
 };

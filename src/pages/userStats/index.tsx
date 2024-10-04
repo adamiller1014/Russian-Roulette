@@ -1,11 +1,11 @@
 import UserStatsPage from '../../components/UserStatsPage';
-import UserStatsProbider from '../../providers/UserStatsProvider';
+import UserStatsProvider from '../../providers/UserStatsProvider';
 
 const UserStats = () => {
   return (
-    <UserStatsProbider>
+    <UserStatsProvider>
       <UserStatsPage />
-    </UserStatsProbider>
+    </UserStatsProvider>
   );
 };
 

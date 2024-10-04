@@ -6,7 +6,7 @@ import AccountModal from '../AccountModal';
 import AffiliateModal from '../AffiliateModal';
 import GameInfoModal from '../GameInfoModal';
 import BetInfoModal from '../BetInfoModal';
-import WalletModal from '../WalletModal';
+import WalletModal from '../WalletModal/WalletModal';
 import StakesModal from '../StakesModal';
 
 const UserStatsPage = () => {
@@ -17,11 +17,12 @@ const UserStatsPage = () => {
   const [isVisibleBetInfo, setIsVisibleBetInfo] = useState(false);
   const [isVisibleWalletModal, setIsVisibleWalletModal] = useState(false);
   const [isVisibleStakesModal, setIsVisibleStakesModal] = useState(false);
+  const address = "your_address_here"; // Replace with the actual address
 
   return (
     <Layout type="base">
       <Button
-        className="m-[10px] bg-white p-[10px]"
+        className="m-[0.625rem] bg-white p-[0.625rem] text-[1rem] lg:text-[0.8rem] md:text-[0.6rem] sm:text-[0.5rem]"
         onClick={() => {
           setIsVisibleUserStats(true);
         }}
@@ -29,7 +30,7 @@ const UserStatsPage = () => {
         UserStatsModal
       </Button>
       <Button
-        className="m-[10px] bg-white p-[10px]"
+        className="m-[0.625rem] bg-white p-[0.625rem] text-[1rem] lg:text-[0.8rem] md:text-[0.6rem] sm:text-[0.5rem]"
         onClick={() => {
           setIsVisibleAccountModal(true);
         }}
@@ -37,7 +38,7 @@ const UserStatsPage = () => {
         Account Modal
       </Button>
       <Button
-        className="m-[10px] bg-white p-[10px]"
+        className="m-[0.625rem] bg-white p-[0.625rem] text-[1rem] lg:text-[0.8rem] md:text-[0.6rem] sm:text-[0.5rem]"
         onClick={() => {
           setIsVisibleAffiliate(true);
         }}
@@ -45,7 +46,7 @@ const UserStatsPage = () => {
         Affiliate Modal
       </Button>
       <Button
-        className="m-[10px] bg-white p-[10px]"
+        className="m-[0.625rem] bg-white p-[0.625rem] text-[1rem] lg:text-[0.8rem] md:text-[0.6rem] sm:text-[0.5rem]"
         onClick={() => {
           setIsVisibleGameInfo(true);
         }}
@@ -53,7 +54,7 @@ const UserStatsPage = () => {
         GAME INFORMATION
       </Button>
       <Button
-        className="m-[10px] bg-white p-[10px]"
+        className="m-[0.625rem] bg-white p-[0.625rem] text-[1rem] lg:text-[0.8rem] md:text-[0.6rem] sm:text-[0.5rem]"
         onClick={() => {
           setIsVisibleBetInfo(true);
         }}
@@ -61,7 +62,7 @@ const UserStatsPage = () => {
         BET INFORMATION
       </Button>
       <Button
-        className="m-[10px] bg-white p-[10px]"
+        className="m-[0.625rem] bg-white p-[0.625rem] text-[1rem] lg:text-[0.8rem] md:text-[0.6rem] sm:text-[0.5rem]"
         onClick={() => {
           setIsVisibleWalletModal(true);
         }}
@@ -69,7 +70,7 @@ const UserStatsPage = () => {
         Wallet
       </Button>
       <Button
-        className="m-[10px] bg-white p-[10px]"
+        className="m-[0.625rem] bg-white p-[0.625rem] text-[1rem] lg:text-[0.8rem] md:text-[0.6rem] sm:text-[0.5rem]"
         onClick={() => {
           setIsVisibleStakesModal(true);
         }}
@@ -82,7 +83,11 @@ const UserStatsPage = () => {
       <AffiliateModal isVisible={isVisibleAffiliate} setIsVisible={setIsVisibleAffiliate} />
       <GameInfoModal isVisible={isVisibleGameInfo} setIsVisible={setIsVisibleGameInfo} />
       <BetInfoModal isVisible={isVisibleBetInfo} setIsVisible={setIsVisibleBetInfo} />
-      <WalletModal isVisible={isVisibleWalletModal} setIsVisible={setIsVisibleWalletModal} />
+      <WalletModal 
+        isVisible={isVisibleWalletModal} 
+        setIsVisible={setIsVisibleWalletModal} 
+        address={address} 
+      />
       <StakesModal isVisible={isVisibleStakesModal} setIsVisible={setIsVisibleStakesModal} />
     </Layout>
   );

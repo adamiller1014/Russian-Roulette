@@ -23,7 +23,7 @@ const UserAndMark: FC<IUserAndMark> = ({
   return (
     <div
       className={`bg-[#171c22] p-[3px] leading-none
-      text-[6px] md:text-[7.2px] lg:text-[9.6px] xl:text-[12px] flex 
+      text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1rem] flex  px-[1rem] py-[0.5rem]
       ${containerClassName || ''}`}
     >
       <div className="flex flex-wrap w-[68%] items-center text-black gap-[3px]">

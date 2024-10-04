@@ -2,7 +2,7 @@ const Resultitem = ({ text, unit, value }) => {
   return (
     <div className="flex flex-row justify-between w-full">
       <span>{text}</span>
-      <span className="flex items-center gap-[3px]">
+      <span className="flex items-center gap-1">
         {value}
         <span className="text-[#f8bf60]">{unit}</span>
       </span>

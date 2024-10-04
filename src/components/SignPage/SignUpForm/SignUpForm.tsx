@@ -4,6 +4,7 @@ import Button from '../../../shared/Button';
 import Form from '../../../shared/Form';
 import TextInput from '../TextInput';
 import { validation } from './validation';
+import UsernameInput from '../../../shared/UsernameInputBox/UsernameInput'; // Import the new UsernameInput component
 
 const SignUpForm = () => {
   const {
@@ -26,17 +27,7 @@ const SignUpForm = () => {
       validationSchema={validation}
       className="w-full flex flex-col  gap-[15px]"
     >
-      <TextInput
-        labelFloating="text-white left-[16px] bg-clip-border xl:translate-y-[calc(-100%-1px)] lg:translate-y-[calc(-100%-4px)] translate-y-[calc(-100%-7px)] scale-85 absolute duration-1 transition "
-        labelNormal="text-white left-[16px] absolute transition "
-        type="text"
-        id="userName"
-        name="userName"
-        value={userName}
-        onChange={setUserName}
-        placeholder=""
-        label="USERNAME"
-      />
+      <UsernameInput value={userName} onChange={setUserName} /> {/* Replace the username input */}
       <TextInput
         labelFloating="text-white left-[16px] bg-clip-border xl:translate-y-[calc(-100%-1px)] lg:translate-y-[calc(-100%-4px)] translate-y-[calc(-100%-7px)] scale-85 absolute duration-1 transition "
         labelNormal="text-white left-[16px] absolute transition "
@@ -47,6 +38,7 @@ const SignUpForm = () => {
         onChange={setUserEmail}
         placeholder=""
         label="EMAIL"
+        textAlign="center" // Add this line
       />
       <div className="flex flex-row gap-[1px]">
         <TextInput

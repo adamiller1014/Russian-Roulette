@@ -1,62 +1,91 @@
+import React, { useState } from 'react'; // Ensure React is imported
 import Icon from '../../../../shared/Icon';
 import ShadowButton from '../../../../shared/ShadowButton';
-import BetSlideBar from './BetSlideBar';
+import SliderComponent from '../../../../shared/Slider';
 
 const BetActionPart = () => {
+  const [bet, setBet] = useState(2.00);
+  const [sliderValue, setSliderValue] = useState(bet);
+  const maxValue = 1000.00; // Maximum bet value
+
+  const formatBet = (value: number) => {
+    return value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+
+  const handleBetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(e.target.value.replace(/,/g, ''));
+    if (!isNaN(value)) {
+      const cappedValue = Math.min(value, maxValue);
+      setBet(cappedValue);
+      setSliderValue(cappedValue);
+    }
+  };
+
+  const handleHalfBet = () => {
+    const newBet = bet / 2;
+    setBet(newBet);
+    setSliderValue(newBet);
+  };
+
+  const handleDoubleBet = () => {
+    const newBet = Math.min(bet * 2, maxValue);
+    setBet(newBet);
+    setSliderValue(newBet);
+  };
+
+  const handleSliderChange = (value: number) => {
+    setSliderValue(value);
+    setBet(value);
+  };
+
   return (
-    <div className="bg-[#2c3137] md:col-span-3 order-1 flex flex-col gap-[5px] px-[3px] py-[10px]">
+    <div className="flex flex-col px-2 py-2 bg-[#2c3137] md:col-span-3 order-1 
+    md:text-[4.8px] lg:text-[6.4px] xl:text-[8px]">
       <ShadowButton
-        className="whitespace-nowrap text-[#f8bf60] leading-none
-      hover:bg-[#21262c] hover:shadow-[0px_4px_0px_0px_rgba(29,32,34,1)] shadow-[0px_4px_0px_0px_rgba(33,38,44,1)]
-      flex justify-center items-center
-      xl:text-[8px] lg:text-[6.4px] md:text-[4.8px] text-[10px] leading-none
-      md:py-[3px] py-[5px]
-      w-[100%] bg-[#1c2127] md:h-[14px] rounded-[5px]"
+        className="flex justify-center items-center w-full py-2 md:py-2 bg-[#1c2127] rounded-[0.25rem]
+                   text-[#f8bf60] font-montserrat font-bold text-xs leading-none whitespace-nowrap
+                   hover:bg-[#21262c] hover:shadow-[0px_4px_0px_0px_rgba(29,32,34,1)]
+                   shadow-[0px_4px_0px_0px_rgba(33,38,44,1)]"
       >
-        <Icon name="diamondIcon" color="#f8bf60" raw />
-        &nbsp;
-        {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-          .format(5)
-          .replace('$', '')}{' '}
-        PROFIT ON WIN
+        $100,000.00 ON WIN
       </ShadowButton>
-      <div className="flex flex-row text-white h-[34px] gap-[1px] mt-[4px]">
-        <div
-          className="bg-[#1c2127] flex-auto flex lg:flex-row md:flex-col flex-row items-center justify-between
-        rounded-l-[5px] relative gap-[1px] px-[2px]
-        text-[9px] xl:text-[9px] lg:text-[7.2px] md:text-[5.4px] "
-        >
-          <button
-            className="flex flex-row items-center gap-[2px] 
-          text-[10px] xl:text-[10px] lg:text-[8px] md:text-[6px] 
-          flex-none w-fit"
-          >
-            Bet
-            <Icon name="sortArrowDown" color="white" size={6} raw />
+
+      <div className="flex flex-row gap-0.5 mt-2 text-white">
+        <div className="flex items-center justify-center px-4 py-4 bg-[#1c2127] rounded-l-[0.25rem] text-xs relative">
+          <button className="flex flex-row items-center gap-[0.25rem] whitespace-nowrap">
+            BET
+            <Icon name="sortArrowDown" color="white" size={12} raw />
           </button>
-          <span className="md:max-w-[25px] lg:max-w-[20px] xl:max-w-[50px] truncate text-center px-[2px]">
-            10
-          </span>
-          <Icon name="diamondIcon" className="flex-none w-fit" color="#f8bf60" raw />
         </div>
-        <div
-          className="bg-[#1c2127] flex-none
-        text-[9px] xl:text-[9px] lg:text-[7.2px] md:text-[5.4px] 
-        xl:w-[35px] lg:w-[28px] md:w-[21px] w-[35px]
-        flex items-center justify-center"
+        <div className="flex items-center justify-center px-4 flex-grow bg-[#1c2127] text-base relative">
+          <input
+            type="text"
+            value={formatBet(bet)}
+            onChange={handleBetChange}
+            className="w-full bg-transparent text-center outline-none"
+          />
+          <Icon name="diamondIcon" className="absolute right-4" color="#f8bf60" size={12} raw />
+        </div>
+        <button
+          onClick={handleHalfBet}
+          className="flex items-center justify-center px-4 bg-[#1c2127] text-xs whitespace-nowrap
+                     transition-transform transform active:scale-90"
         >
-          1/2
-        </div>
-        <div
-          className="bg-[#1c2127] flex-none
-          text-[9px] xl:text-[9px] lg:text-[7.2px] md:text-[5.4px] 
-          xl:w-[35px] lg:w-[28px] md:w-[21px] w-[35px]
-          flex items-center justify-center rounded-r-[5px]"
+          ÷2
+        </button>
+        <button
+          onClick={handleDoubleBet}
+          className="flex items-center justify-center px-4 bg-[#1c2127] text-xs whitespace-nowrap rounded-r-[5px]
+                     transition-transform transform active:scale-90"
         >
           x2
-        </div>
+        </button>       
       </div>
-      <BetSlideBar />
+      <SliderComponent 
+        sliderValue={sliderValue} 
+        setSliderValue={handleSliderChange} 
+        maxValue={maxValue}
+      />
     </div>
   );
 };

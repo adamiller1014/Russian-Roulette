@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, PropsWithChildren } from 'react';
 import BaseLayout from './BaseLayout';
 import MainLayout from './MainLayout';
-import { ILayout } from './types';
 import { useTheme } from '../../providers/ThemeProvider';
 
 const layoutContainers = {
@@ -9,7 +8,7 @@ const layoutContainers = {
   main: MainLayout
 };
 
-interface ILayoutFactory extends ILayout {
+interface ILayoutFactory extends PropsWithChildren {
   type: keyof typeof layoutContainers;
 }
 

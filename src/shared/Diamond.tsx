@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Icon from './Icon';
 
 interface IDiamond {
-  postion: 'start' | 'end' | 'center';
+  position: 'start' | 'end' | 'center';
   xValue: number;
   dValue: number;
   containerClassName?: string;
@@ -10,13 +10,13 @@ interface IDiamond {
 }
 
 const DiamondComponent: FC<IDiamond> = ({
-  postion,
+  position,
   xValue,
   dValue,
   containerClassName,
   className
 }) => {
-  if (postion === 'end') {
+  if (position === 'end') {
     return (
       <div
         className={`bg-[#171c22] flex justify-center flex-col ml-0
@@ -50,7 +50,7 @@ const DiamondComponent: FC<IDiamond> = ({
         </div>
       </div>
     );
-  } else if (postion === 'center') {
+  } else if (position === 'center') {
     return (
       <div
         className={`bg-[#171c22] flex justify-center gap-[2px] flex-col ml-0

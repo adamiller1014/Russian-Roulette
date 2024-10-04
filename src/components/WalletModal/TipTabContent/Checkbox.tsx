@@ -8,11 +8,11 @@ const CheckBox = ({ className = '', isLeft, setIsLeft }) => {
     cursor-pointer
     rounded-[20px] w-[45px] py-[5px]
     h-[26px]
-    relative bg-[#f8bf60]
+    relative ${isLeft ? 'bg-white' : 'bg-[#f8bf60]'}
     ${className || ''}`}
     >
       <div
-        className={`bg-[#1c2127]
+        className={`${isLeft ? 'bg-[#1c2127]' : 'bg-[#1c2127]'}
       h-[20px] w-[20px] rounded-full
       absolute
       ${isLeft ? 'left-[5px]' : 'right-[5px]'}`}

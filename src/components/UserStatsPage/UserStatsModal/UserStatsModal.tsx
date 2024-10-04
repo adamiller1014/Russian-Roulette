@@ -1,4 +1,3 @@
-// import { useUserStats } from "../../../providers/UserStatsProvider";
 import Modal from '../../../shared/Modal';
 import DropDownButton from '../DropDownButton';
 import StatsTable from '../StatsTable';
@@ -6,13 +5,17 @@ import UserStatus from '../UserStatus';
 import Chart from '../Chart';
 import { useState } from 'react';
 
-const UserStatsModal = ({ isVisible, setIsVisible }) => {
+interface UserStatsModalProps {
+  isVisible: boolean;
+  setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const UserStatsModal: React.FC<UserStatsModalProps> = ({ isVisible, setIsVisible }) => {
   const [isDropped, setIsDropped] = useState(false);
+
   return (
     <Modal
-      classNames="md:w-[700px] !gap-0 text-white
-      w-[95%]"
-      // xl:w-[700px] lg:w-[560px] md:w-[400px]
+      classNames="md:w-[700px] !gap-0 text-white w-[95%]"
       onClose={() => {
         setIsVisible(false);
       }}
@@ -29,9 +32,9 @@ const UserStatsModal = ({ isVisible, setIsVisible }) => {
         "
       >
         <UserStatus />
-        <div className="w-full h-[1px] bg-[#1C2127] " />
+        <div className="w-full h-[1px] bg-[#1C2127]" />
         <StatsTable />
-        <div className="w-full h-[1px] bg-[#1C2127] " />
+        <div className="w-full h-[1px] bg-[#1C2127]" />
         <div className="flex flex-col items-center justify-center gap-[10px]">
           <DropDownButton
             isVisible={isDropped}

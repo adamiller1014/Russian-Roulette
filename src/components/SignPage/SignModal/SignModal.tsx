@@ -53,13 +53,13 @@ const SignModal = () => {
                   ? 'hover:mix-blend-difference !bg-[#f8bf60] text-black'
                   : 'hover:bg-[#21262c] bg-[#1c2127] text-white'
               }
-            !rounded-r-[5px] !flex-1 !h-[40px]`}
+            !rounded-r-[0.25rem] !flex-1 !h-[3rem] `}
             >
               CREATE AN ACCOUNT
             </Button>
           </div>
           {tab === 'signin' ? <SignInForm /> : <SignUpForm />}
-          <Divider className="py-[2vh]" />
+          <Divider className="py-4" />
           <SocialButtons />
         </div>
         <ForgotTab />

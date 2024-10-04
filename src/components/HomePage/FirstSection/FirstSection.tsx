@@ -1,74 +1,58 @@
-import Icon from '../../../shared/Icon';
-import ScrollableComponent from '../../../shared/ScrollbarComponent';
-import ShadowButton from '../../../shared/ShadowButton';
-import AllBets from './AllBets';
-import TextAndBet from './Text_And_Bet';
-import YourBets from './YourBets';
+import React, { lazy, Suspense, useState, useCallback } from 'react';
+import { sharedStyles } from '../../../styles/sharedStyles';
 
-const FirstSection = () => {
+const BetsHeader = lazy(() => import('./BetsHeader'));
+const BetsContent = lazy(() => import('./BetsContent'));
+const BetTypeSelector = lazy(() => import('./BetTypeSelector'));
+const BonusModal = lazy(() => import('./BonusModal'));
+
+type BetType = 'GROUP' | 'SOLO';
+
+const FirstSection: React.FC = () => {
+  const [selectedBetType, setSelectedBetType] = useState<BetType>('GROUP');
+  const [isBonusModalOpen, setIsBonusModalOpen] = useState(false);
+
+  const handleBetTypeSelect = useCallback((type: BetType) => {
+    setSelectedBetType(type);
+    // Add any additional logic here, e.g., fetching new data based on the selected type
+  }, []);
+
+  const handleBuyBonusClick = useCallback(() => {
+    setIsBonusModalOpen(true);
+  }, []);
+
+  const handleCloseBonusModal = useCallback(() => {
+    setIsBonusModalOpen(false);
+  }, []);
+
+  const handleSelectBonus = useCallback((bonusType: string) => {
+    console.log(`Selected bonus: ${bonusType}`);
+    // Add logic to handle the selected bonus
+    setIsBonusModalOpen(false);
+  }, []);
+
   return (
-    <div className="md:col-span-3 text-white flex flex-col gap-[3px] md:order-1 order-2 ">
-      <div
-        className=" bg-[#2c3137] w-full flex justify-center items-center
-      h-[44px] 
-      xl:text-[16px] lg:text-[12.8px] md:text-[9.6px] text-[8px]"
-      >
-        BETS
-      </div>
-      <ScrollableComponent height="calc(100vh - 291px)">
-        <div className="flex flex-col">
-          <TextAndBet
-            text={`My Bets ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-              .format(777777)
-              .replace('$', '')
-              .replace(/\..*/g, '')}`}
-            bet={500000}
-          />
-          <YourBets />
-          <TextAndBet
-            text={`${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-              .format(777777)
-              .replace('$', '')
-              .replace(/\..*/g, '')} Bets`}
-            bet={1250000}
-          />
-          <AllBets />
-        </div>
-      </ScrollableComponent>
-
-      <div
-        className="xl:text-[14px] lg:text-[11.2px] md:text-[8.4px] text-[8px]
-      bg-[#2c3137] flex flex-col justify-center items-center
-      gap-[5px]
-      xl:px-[10px] lg:px-[8px] md:px-[6px] px-[5px]
-      relative h-[100px]"
-      >
-        <div>TYPE</div>
-        <div className="flex w-full">
-          <ShadowButton
-            className="hover:mix-blend-difference text-[black] flex justify-center items-center
-          shadow-[0px_5px_0px_0px_rgba(153,122,73,1)] w-[50%] bg-[#f8bf60] h-[33px] rounded-l-[5px]"
-          >
-            NORMAL
-          </ShadowButton>
-          <ShadowButton
-            className="whitespace-break-spaces hover:bg-[#21262c]
-          hover:shadow-[0px_5px_0px_0px_rgba(29,32,34,1)] shadow-[0px_5px_0px_0px_rgba(33,38,44,1)]
-          flex justify-center items-center !leading-none
-          w-[50%] bg-[#1c2127] h-[33px] rounded-r-[5px]"
-          >
-            BONUS-ONLY
-          </ShadowButton>
-        </div>
-        <button
-          className="xl:text-[16px] md:text-[12.8px] md:text-[9.6px] text-[8px]
-        flex flex-col justify-center items-center absolute top-[-13%]"
-        >
-          <Icon name="iosArrowDown" color="white" raw />
-        </button>
-      </div>
-    </div>
+    <section className={`
+      ${sharedStyles.flexCol}
+      ${sharedStyles.textPrimary}
+      md:col-span-3 gap-1 md:order-1 order-2
+    `}>
+      <Suspense fallback={<div className={sharedStyles.skeleton}>Loading...</div>}>
+        <BetsHeader />
+        <BetsContent />
+        <BetTypeSelector 
+          selectedType={selectedBetType}
+          onTypeSelect={handleBetTypeSelect}
+          onBuyBonusClick={handleBuyBonusClick}
+        />
+        <BonusModal
+          isOpen={isBonusModalOpen}
+          onClose={handleCloseBonusModal}
+          onSelectBonus={handleSelectBonus}
+        />
+      </Suspense>
+    </section>
   );
 };
 
-export default FirstSection;
+export default React.memo(FirstSection);

@@ -1,7 +1,10 @@
-import BetStatusBar from '../BetStatusBar';
+import { useState } from 'react';
+import SliderComponent from '../../../../shared/Slider';
 import NewBetItem from '../NewBetItem';
 
 const AddNewBet = () => {
+  const [sliderValue, setSliderValue] = useState(0);
+
   return (
     <div
       className="flex flex-col xl:gap-[15px] lg:gap-[12px] md:gap-[10px] gap-[6px]
@@ -16,15 +19,15 @@ const AddNewBet = () => {
       <NewBetItem value={0.1} type="$">
         Bet
       </NewBetItem>
-      <BetStatusBar />
+      <SliderComponent sliderValue={sliderValue} setSliderValue={setSliderValue} />
       <NewBetItem value={0.1} type="$">
-        Payout(<span className="text-[#f8bf60]">Bounus</span>)
+        Payout(<span className="text-[#f8bf60]">Bonus</span>)
       </NewBetItem>
-      <BetStatusBar />
+      <SliderComponent sliderValue={sliderValue} setSliderValue={setSliderValue} />
       <NewBetItem value={0.1} type="$">
         Payout(Base)
       </NewBetItem>
-      <BetStatusBar />
+      <SliderComponent sliderValue={sliderValue} setSliderValue={setSliderValue} />
     </div>
   );
 };

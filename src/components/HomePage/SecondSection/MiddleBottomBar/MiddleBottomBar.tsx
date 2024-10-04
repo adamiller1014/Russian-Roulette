@@ -1,12 +1,12 @@
 import BetActionPart from './BetActionPart';
 import PayoutActionPart from './PayoutActionPart';
-import PlayActionPart from './PlayActionPart';
+import TotalWinDisplay from './TotalWinDisplay';
 
 const MiddleBottomBar = () => {
   return (
-    <div className="md:grid flex flex-col md:grid-cols-10 gap-[5px] md:h-[100px]">
+    <div className="md:grid flex flex-col md:grid-cols-10 gap-1 md:h-[100px]">
       <BetActionPart />
-      <PlayActionPart />
+      <TotalWinDisplay />
       <PayoutActionPart />
     </div>
   );

@@ -7,6 +7,8 @@ interface IShadowButtonProps {
   type?: 'button' | 'submit' | 'reset' | undefined;
   onClick?: (e: any) => void;
   disabled?: boolean;
+  topColor?: string;
+  bottomColor?: string;
 }
 
 const ShadowButton: FC<IShadowButtonProps> = ({
@@ -15,16 +17,31 @@ const ShadowButton: FC<IShadowButtonProps> = ({
   className,
   onClick,
   type,
+  disabled,
+  topColor,
+  bottomColor,
   ...rest
 }) => {
+  const buttonStyle = topColor && bottomColor
+    ? {
+        backgroundColor: topColor,
+        boxShadow: `0 6px 0 ${bottomColor}`,
+      }
+    : {};
+
   return (
     <button
       id={id}
       type={`${type ? type : 'button'}`}
-      className={`transition duration-[100ms]
-            active:translate-y-[3px]
+      className={`relative
+            overflow-hidden
+            transition-all duration-100 ease-in-out
+            ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}
+            ${disabled ? '' : 'active:translate-y-[6px] active:shadow-none'}
             ${className || ''}`}
-      onClick={onClick}
+      style={buttonStyle}
+      onClick={disabled ? undefined : onClick}
+      disabled={disabled}
       {...rest}
     >
       {children}

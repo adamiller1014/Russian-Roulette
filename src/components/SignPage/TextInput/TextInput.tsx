@@ -17,7 +17,9 @@ interface TextInputProps {
   labelNormal?: string;
   className?: string;
   isBorder?: boolean;
+  textAlign?: 'left' | 'center' | 'right'; // Add this line
 }
+
 const TextInput: FC<TextInputProps> = ({
   label,
   value,
@@ -32,7 +34,8 @@ const TextInput: FC<TextInputProps> = ({
   labelFloating,
   labelNormal,
   isBorder = false,
-  className = ''
+  className = '',
+  textAlign = 'left' // Add this line
 }) => (
   <div className="w-full">
     {variant === 'single' ? (
@@ -48,11 +51,7 @@ const TextInput: FC<TextInputProps> = ({
         onChange={(e) => onChange(e.target.value)}
         containerClassName={`w-full h-[40px] rounded-[4px]
         bg-[#1c2127] ${className || ''}`}
-        className="outline-none
-                text-[white]
-                focus:border-none 
-                focus:ring-0
-                px-[15px]"
+        className={`outline-none text-[white] focus:border-none focus:ring-0 px-[15px] text-${textAlign}`} // Update this line
         placeholder={placeholder}
         classNameError={`text-[#ed2a1d]
       text-[10px] ${classNameError}`}

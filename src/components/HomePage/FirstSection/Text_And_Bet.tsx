@@ -9,10 +9,10 @@ interface ITextAndBet {
 
 const TextAndBet: FC<ITextAndBet> = ({ text, bet, className, containerClassName }) => {
   return (
-    <div className="bg-[#2c3137] w-full">
+    <div className="bg-[#2c3137] w-full ">
       <div
-        className={`${containerClassName || ''} m-[3px] bg-[#1C2127] flex justify-between p-[3px]
-        text-[6px] md:text-[7.2px] lg:text-[9.6px] xl:text-[12px]`}
+        className={`${containerClassName || ''} bg-[#171C21] flex justify-between px-[1rem] py-[0.5rem]
+        text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1rem] rounded-t-md `}
       >
         <span className={`flex flex-row items-center ${className || ''}`}>{text}</span>
         <div className={`gap-[2px] flex flex-row items-center ${className || ''}`}>

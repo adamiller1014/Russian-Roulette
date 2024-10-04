@@ -1,13 +1,18 @@
+import { useState } from 'react';
 import Icon from '../../shared/Icon';
 import ScrollableComponent from '../../shared/ScrollbarComponent';
 import ShadowButton from '../../shared/ShadowButton';
+import WalletModal from '../WalletModal/WalletModal';
 
 const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCurrentIndex }) => {
+  const [isVisibleWalletModal, setIsVisibleWalletModal] = useState(false);
+  const address = "e60351d7c15799b6126eeeda3bced558d7d165ff7d3c11d071a5413719dcd4c1"; // Replace with the actual address
+
   return (
     <>
       <div
         className="relative
-      xl:text-[16px] lg:text-[11.2px] md:text-[9.6px] text-[10px]"
+        xl:text-base lg:text-xs md:text-[9.6px] text-[10px]"
       >
         <ShadowButton
           onClick={() => {
@@ -49,11 +54,10 @@ const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCu
           )}
         </ShadowButton>
         <div
-          className={`${isClicked ? '' : 'hidden'}
-          xl:rounded-[10px] lg:rounded-[8px] md:rounded-[6px]
-          z-[2] absolute top-[100%] mt-[5px] bg-[#2c3137] w-full`}
+          className={`transition-all duration-300 ease-in-out ${isClicked ? 'opacity-100' : 'opacity-0 pointer-events-none'} 
+          xl:rounded-[10px] lg:rounded-[8px] md:rounded-[6px] z-[2] absolute top-[100%] mt-[5px] bg-[#2c3137] w-full shadow-lg`}
         >
-          <ScrollableComponent className={` max-h-[200px]`}>
+          <ScrollableComponent className={`max-h-[200px] overflow-y-auto`}>
             {cryptoList &&
               cryptoList.length > 0 &&
               cryptoList.map((r: any, i: number) => (
@@ -63,10 +67,7 @@ const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCu
                     setCurrentIndex(i);
                     setIsClicked(false);
                   }}
-                  className="xl:h-[35px] md:h-[28px] 
-                  hover:bg-[#171c22] border-[1px]
-                  xl:rounded-[10px] lg:rounded-[8px] md:rounded-[6px]
-                  border-[#171c22] w-full flex items-center justify-center"
+                  className="xl:h-[35px] md:h-[28px] hover:bg-[#171c22] border-[1px] border-[#171c22] w-full flex items-center justify-center transition-colors duration-200"
                 >
                   {r}
                 </button>
@@ -76,12 +77,8 @@ const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCu
       </div>
       <ShadowButton
         className="hover:mix-blend-difference text-[black] flex justify-center items-center bg-[#f8bf60]
-      xl:shadow-[0px_6px_0px_0px_rgba(153,122,73,1)] lg:shadow-[0px_5px_0px_0px_rgba(153,122,73,1)] 
-      xl:text-[16px] lg:text-[11.2px] md:text-[9.6px]
-      xl:h-[38px] md:h-[30.4px] h-[30px]
-      xl:w-[38px] md:w-[30.4px] w-[30px]
-      rounded-r-[6px]
-      xl:rounded-r-[10px] lg:rounded-r-[8px] md:rounded-r-[6px]"
+        shadow-[0px_6px_0px_0px_rgba(153,122,73,1)] w-[2.375rem] h-[2.375rem] rounded-r-[0.625rem]"
+        onClick={() => setIsVisibleWalletModal(true)}
       >
         <Icon
           name="wallet"
@@ -90,6 +87,11 @@ const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCu
           raw
         />
       </ShadowButton>
+      <WalletModal 
+        isVisible={isVisibleWalletModal} 
+        setIsVisible={setIsVisibleWalletModal} 
+        address={address} // Pass the address prop here
+      />
     </>
   );
 };

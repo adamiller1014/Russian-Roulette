@@ -1,7 +1,6 @@
-import React from 'react';
-import { ILayout } from './types';
+import React, { PropsWithChildren } from 'react';
 
-function BaseLayout({ children }: ILayout) {
+function BaseLayout({ children }: PropsWithChildren) {
   return (
     <div
       className="relative z-[2] font-[Montserrat-semi]

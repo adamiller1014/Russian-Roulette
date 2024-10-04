@@ -15,9 +15,10 @@ const TabItemButton = ({
         setTab(index);
       }}
       className={`flex-1
-    xl:text-[14px] lg:text-[10.8px] md:text-[8.4px]
-    ${isFirst ? 'rounded-l-[5px]' : ''}
-    ${isLast ? 'rounded-r-[5px]' : ''}
+    xl:text-md lg:text-sm md:text-sm 
+    font-montserrat font-bold
+    ${isFirst ? 'rounded-l-[0.25rem]' : ''}
+    ${isLast ? 'rounded-r-[0.25rem]' : ''}
     ${tab === index ? '!bg-[#f8bf60] text-black' : '!bg-[#1c2127]'}
     ${className || ''}`}
     >

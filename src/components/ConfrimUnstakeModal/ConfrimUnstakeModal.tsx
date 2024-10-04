@@ -1,17 +1,19 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Button from '../../shared/Button';
 import Modal from '../../shared/Modal';
-import BetStatusBar from '../HomePage/SecondSection/BetStatusBar';
 import UnstakeInputTag from './UnstackInputTag';
+import SliderComponent from '../../shared/Slider';
 
 const ConfrimUnstakeModal = ({ isVisible, setIsVisible }) => {
   const [unstake, setUnstake] = useState('281500');
+  const [sliderValue, setSliderValue] = useState(0);
+  const maxValue = 1000.00; // Static max value for now
+
   return (
     <Modal
       classNames="!gap-0
       md::w-[542px]
 			text-white"
-      // xl:w-[542px] lg:w-[433.6px] md:w-[325.2px]
       onClose={() => {
         setIsVisible(false);
       }}
@@ -25,7 +27,7 @@ const ConfrimUnstakeModal = ({ isVisible, setIsVisible }) => {
           xl:text-[12px] lg:text-[9.6px] md:text-[7.2px]"
       >
         <UnstakeInputTag unstake={unstake} setUnstake={setUnstake} />
-        <BetStatusBar />
+        <SliderComponent sliderValue={sliderValue} setSliderValue={setSliderValue} maxValue={maxValue} />
         <div
           className="flex flex-row gap-[3px] mt-[5px]
 				xl:text-[16px] md:text-[12.8px] md:text-[9.6px] "
@@ -45,6 +47,9 @@ const ConfrimUnstakeModal = ({ isVisible, setIsVisible }) => {
           >
             CONFIRM
           </Button>
+        </div>
+        <div className="mt-[10px] text-center text-[#f8bf60]">
+          Amount: {(sliderValue / 100 * maxValue).toFixed(2)}
         </div>
       </div>
     </Modal>

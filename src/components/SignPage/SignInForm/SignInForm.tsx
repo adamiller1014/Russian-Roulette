@@ -15,7 +15,7 @@ const SignInForm = () => {
         navigate('/');
       }}
       validationSchema={validation}
-      className="w-full flex flex-col  gap-[15px]"
+      className="w-full flex flex-col  gap-4"
     >
       <TextInput
         labelFloating="text-white left-[16px] bg-clip-border xl:translate-y-[calc(-100%-1px)] lg:translate-y-[calc(-100%-4px)] translate-y-[calc(-100%-7px)] scale-85 absolute duration-1 transition "

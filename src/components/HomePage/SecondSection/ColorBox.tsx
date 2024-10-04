@@ -1,54 +1,63 @@
-import { FC } from 'react';
+import React, { FC, memo, useRef, useEffect } from 'react';
 
-interface IColorBox {
+interface ColorBoxProps {
   isBonus: boolean;
-  width?: string;
   text: string;
   color: string;
-  containterClass?: string;
+  containerClass?: string;
   className?: string;
-  animation?: string;
+  onWidthChange?: (width: number) => void;
+  isLandingMultiplier?: boolean;  // We'll keep this prop but won't use it for highlighting
 }
 
-const ColorBox: FC<IColorBox> = ({
+const ColorBox: FC<ColorBoxProps> = memo(({
   isBonus,
-  width,
   color,
-  containterClass,
-  className,
+  containerClass = '',
+  className = '',
   text,
-  animation = ''
+  onWidthChange,
 }) => {
+  const boxRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (boxRef.current && onWidthChange) {
+      onWidthChange(boxRef.current.offsetWidth);
+    }
+  }, [onWidthChange]);
+
+  const containerClasses = [
+    'flex flex-col justify-center items-center md:h-[4.12rem] h-[25px] md:px-[0.5rem] px-[0.25rem] rounded-[0.25rem]',
+    containerClass
+  ].join(' ');
+
   return (
     <div
-      className={`relative ${containterClass || ''} rounded-[3px] mr-[2px] 
-      flex h-full ${
-        isBonus
-          ? 'flex-col leading-none justify-center items-center !gap-0'
-          : 'flex-row justify-center items-center'
-      }`}
-      style={{ backgroundColor: color, animation: animation }}
+      ref={boxRef}
+      className={containerClasses}
+      style={{ 
+        backgroundColor: color, 
+        color: '#1C2127',
+        width: 'auto',
+        minWidth: 'min-content'
+      }}
     >
       {isBonus && (
-        <div className="justify-center flex text-[7px] md:text-[7.2px] lg:text-[9.6px] xl:text-[12px]">
+        <div className="justify-center flex text-[1rem] font-bold" style={{ fontFamily: 'Montserrat-bold' }}>
           BONUS
         </div>
       )}
       <span
-        className={`leading-none text-center text-[10px] xl:text-[14px] lg:text-[11.2px] md:text-[8.4px] ${
-          className || ''
-        }`}
+        className={`text-center whitespace-nowrap text-[2.5rem] xs:text-base 4xl:text-4xl font-bold ${className}`}
+        style={{
+          fontFamily: 'Montserrat-bold',
+          lineHeight: '1',
+        }}
       >
-        {text}
+        x{text}
       </span>
-      {isBonus && (
-        <div
-          className="opacity-[0.3] absolute flex w-[5px] justify-start h-full overflow-hidden"
-          style={{ backgroundColor: 'black', left: width || '0' }}
-        />
-      )}
     </div>
   );
-};
+});
 
 export default ColorBox;

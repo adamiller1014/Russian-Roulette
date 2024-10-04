@@ -40,7 +40,8 @@ const CampaignsTab = () => {
       <DividerDiv className="!bg-[#1c2127]" />
       <CampaignsTable headers={headers} list={list} />
       <Button
-        className="h-[40px] rounded-[6px] bg-[#f8bf60] text-black"
+        className="bg-[#f8bf60] text-black rounded-[6px]
+                h-[40px]"
       >
         STAKE COMMISSION
       </Button>

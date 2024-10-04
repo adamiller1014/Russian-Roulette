@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Add useEffect if needed
 import DividerDiv from '../../DividerDiv';
-import BetStatusBar from '../../HomePage/SecondSection/BetStatusBar';
+// import BetStatusBar from '../../HomePage/SecondSection/Slider';
+import SliderComponent from '../../../shared/Slider';
 import NumberProcess from '../../NumberProcess';
 import InfoButton from '../../WalletModal/YieldTabContent/StakeSubTabContent/InfoButton';
 import RiskStake from '../../WalletModal/YieldTabContent/StakeSubTabContent/RiskStake';
@@ -40,11 +41,22 @@ const CustomStakesTabContent = () => {
     type: null,
     id: null
   });
+  const [sliderValue, setSliderValue] = useState(0);
+  const [stakeAmount, setStakeAmount] = useState(100); // Add this line
+  const maxValue = 1000.00; // Static max value for now
+  const [isRiskStakeChecked, setIsRiskStakeChecked] = useState(false);
+
   useEffect(() => {
     if (currentIndex.type === 'reset') {
       setIsVisibleResetWinChance(true);
     }
   }, [currentIndex]);
+
+  const handleSliderChange = (value: number) => {
+    setSliderValue(value);
+    setStakeAmount(value);
+  };
+
   return (
     <div className="flex flex-col gap-[10px] mx-[15px]">
       <div className="text-center">ADD NEW STAKE</div>
@@ -58,9 +70,9 @@ const CustomStakesTabContent = () => {
         }
       />
       <StakeStatusBar />
-      <StakeInfoButtons />
-      <BetStatusBar />
-      <RiskStake />
+      <StakeInfoButtons stakeAmount={stakeAmount} isRiskStakeChecked={isRiskStakeChecked} />
+      <SliderComponent sliderValue={sliderValue} setSliderValue={handleSliderChange} maxValue={maxValue} />
+      <RiskStake isChecked={isRiskStakeChecked} setIsChecked={setIsRiskStakeChecked} />
       <AddOrEditingButtons
         setCurrenIndex={setCurrenIndex}
         currentIndex={currentIndex}
