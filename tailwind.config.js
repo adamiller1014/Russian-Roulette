@@ -9,6 +9,9 @@ module.exports = {
       center: true
     },
     extend: {
+      gridTemplateColumns: {
+        15: 'repeat(15, minmax(0, 1fr))'
+      },
       fontFamily: {
         indieflower: ['IndieFlower', 'san-serif'],
         aldrich: ['Aldrich', 'sans-serif'],
