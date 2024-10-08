@@ -35,12 +35,14 @@ class ErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryStat
 
 const ThirdSection: React.FC = () => {
   return (
-    <section className="md:col-span-3 text-white flex flex-col gap-1 order-3 md:h-screen h-fit">
+    <section className="flex flex-col order-3 gap-1 text-white xl:col-span-3 col-span-0 xl:h-screen h-fit">
       <ErrorBoundary>
         <Suspense fallback={<LoadingFallback />}>
+        <div className='hidden xl:block'>
           <TopWinnersHeader />
           <TopWinnersList />
-          <PlayButtonArea />
+        <PlayButtonArea />
+      </div>
         </Suspense>
       </ErrorBoundary>
     </section>

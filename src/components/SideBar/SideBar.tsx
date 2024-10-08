@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, useEffect, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 import { motion } from 'framer-motion';
 import Topbar from './Topbar';
@@ -6,6 +6,8 @@ import ScrollableComponent from '../../shared/ScrollbarComponent';
 import ChatItem from './ChatItem';
 import NotificationChatItem from './NotificationChatItem';
 import BottomBar from './BottomBar';
+
+const PlayButtonArea = lazy(() => import('../HomePage/ThirdSection/PlayButtonArea'));
 
 const Sidebar = ({ open, setOpen }) => {
   const [width, setWidth] = useState('0');
@@ -141,7 +143,7 @@ const Sidebar = ({ open, setOpen }) => {
 
   useEffect(() => {
     if (isMd && open) {
-      setWidth('100%');
+      setWidth('0%');
     } else if (isLg && open) {
       setWidth('240px');
     } else if (isXl && open) {
@@ -152,7 +154,7 @@ const Sidebar = ({ open, setOpen }) => {
   }, [open, isLg, isMd, isXl]);
   return (
     <motion.div
-      className="flex flex-col bg-[#20252B] z-[45] fixed right-0 md:h-full h-screen"
+      className="flex flex-col bg-[#20252B] z-[45] fixed right-0 md:h-full h-screen overflow-auto"
       style={{ width: width }}
       initial={open ? 'open' : 'closed'}
       animate={open ? 'open' : 'closed'}
@@ -161,7 +163,7 @@ const Sidebar = ({ open, setOpen }) => {
     >
       <Topbar open={open} setOpen={setOpen} />
       <ScrollableComponent height="calc(100vh - 140px)">
-        <div className="flex w-full flex-col">
+        <div className="flex flex-col w-full">
           {chats.map((c, i) =>
             c.type === 'notification' ? (
               <NotificationChatItem key={i} {...c} />
@@ -171,7 +173,11 @@ const Sidebar = ({ open, setOpen }) => {
           )}
         </div>
       </ScrollableComponent>
+      <div className='block xl:hidden'>
+        <PlayButtonArea />
+      </div>
       <BottomBar />
+      
     </motion.div>
   );
 };

@@ -35,7 +35,7 @@ const FirstSection: React.FC = () => {
     <section className={`
       ${sharedStyles.flexCol}
       ${sharedStyles.textPrimary}
-      md:col-span-3 gap-1 md:order-1 order-2
+      lg:col-span-3 gap-1 lg:order-1 order-2 lg:block hidden
     `}>
       <Suspense fallback={<div className={sharedStyles.skeleton}>Loading...</div>}>
         <BetsHeader />

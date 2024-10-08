@@ -14,7 +14,7 @@ function MainLayout({ children }: PropsWithChildren) {
 
   useEffect(() => {
     if (isMd && isOpen) {
-      setWidth(180);
+      setWidth(0);
     } else if (isLg && isOpen) {
       setWidth(240);
     } else if (isXl && isOpen) {
@@ -30,7 +30,7 @@ function MainLayout({ children }: PropsWithChildren) {
   };
 
   return (
-    <div className="flex md:flex-row flex-row w-full h-screen bg-[#1c2127] font-[Montserrat-semi] xl:text-[1rem] md:text-[0.75rem] overflow-hidden">
+    <div className="flex md:flex-row flex-row w-full bg-[#1c2127] font-[Montserrat-semi] xl:text-[1rem] md:text-[0.75rem]">
       <motion.div
         style={{ width: isOpen ? `calc(100% - ${width}px)` : '100%' }}
         initial={isOpen ? 'open' : 'closed'}
@@ -40,7 +40,7 @@ function MainLayout({ children }: PropsWithChildren) {
         className="flex flex-col h-full"
       >
         <Header />
-        <div className="flex-grow overflow-hidden">{children}</div>
+        <div className="flex-grow">{children}</div>
         <Footer />
       </motion.div>
       <SideBar open={isOpen} setOpen={setIsOpen} />

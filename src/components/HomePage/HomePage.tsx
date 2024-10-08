@@ -18,7 +18,7 @@ const HomePage = () => {
         - gap-[0.25rem]: Adds a 0.25rem gap between child elements
         - pt-[0.5rem] pb-[0.5rem]: Adds 0.5rem padding to top and bottom
       */}
-      <div className="md:grid md:grid-cols-12 flex flex-col gap-[3px] p-[3px]">
+      <div className="flex flex-col h-full gap-1 p-1 md:grid md:grid-cols-15">
         {/* Rendering the three main sections of the page */}
         <FirstSection />
         <SecondSection />
