@@ -1,12 +1,13 @@
+import { lazy } from 'react';
 import BetActionPart from './BetActionPart';
 import PayoutActionPart from './PayoutActionPart';
-import TotalWinDisplay from './TotalWinDisplay';
 
+const PlayButtonArea = lazy(() => import('../../../HomePage/ThirdSection/PlayButtonArea'));
 const MiddleBottomBar = () => {
   return (
-    <div className="md:grid flex flex-col md:grid-cols-10 gap-1 md:h-[100px]">
+    <div className="flex w-full h-auto gap-1">
       <BetActionPart />
-      <TotalWinDisplay />
+      <PlayButtonArea />
       <PayoutActionPart />
     </div>
   );

@@ -4,6 +4,7 @@ import { useTopWinners } from '../../../hooks/useTopWinners';
 import TopWinner from '../TopWinner/TopWinner';
 import ScrollToBottomButton from './ScrollToBottomButton';
 import { useScrollDetection } from '../../../hooks/useScrollDetection';
+// import ScrollableComponent from '../../../shared/ScrollbarComponent';
 
 const TopWinnersList: React.FC = () => {
   const topWinners = useTopWinners();
@@ -18,7 +19,7 @@ const TopWinnersList: React.FC = () => {
   }, [topWinners.length]);
 
   return (
-    <div className="relative h-[calc(100vh-23.8rem)]">
+    <div className="relative h-[calc(100vh-350px)]">
       <div
         ref={parentRef}
         className={`h-full overflow-auto ${containerClassName}`}

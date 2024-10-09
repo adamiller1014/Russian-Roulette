@@ -11,7 +11,7 @@ const PlayButton: React.FC<PlayButtonProps> = React.memo(({ isPlaying, setIsPlay
     disabled={isPlaying}
     onClick={() => setIsPlaying(true)}
     className={`
-      text-xs md:text-[2rem] xl:text-[2.75rem] 2xl:text-[3rem] 3xl:text-[4rem]  4xl:text-[5rem] 
+      text-xs sm:text-[0.75rem] lg:text-[1rem] xl:text-[1.75rem] 2xl:text-[2rem] 
       basis-[60%] h-full
       leading-none font-montserrat font-bold text-black flex items-center justify-center
       px-2

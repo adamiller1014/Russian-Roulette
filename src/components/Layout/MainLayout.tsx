@@ -30,7 +30,7 @@ function MainLayout({ children }: PropsWithChildren) {
   };
 
   return (
-    <div className="flex md:flex-row flex-row w-full bg-[#1c2127] font-[Montserrat-semi] xl:text-[1rem] md:text-[0.75rem]">
+    <div className="flex md:flex-row flex-row w-full bg-[#1c2127] font-[Montserrat-semi] xl:text-[1rem] md:text-[0.75rem] overflow-y-hidden">
       <motion.div
         style={{ width: isOpen ? `calc(100% - ${width}px)` : '100%' }}
         initial={isOpen ? 'open' : 'closed'}

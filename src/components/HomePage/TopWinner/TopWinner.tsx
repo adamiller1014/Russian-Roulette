@@ -20,7 +20,7 @@ const TopWinner: FC<ITopWinner> = ({
   return (
     <div
       className={`flex bg-[#1c2127] py-[0.5rem] text-xs md:text-xs lg:text-sm xl:text-[1rem]
-      justify-between px-[1rem] text-[#F8BF60] flex-row items-center text-center ${containerClassName || ''}`}
+      justify-between px-[1rem] text-[#F8BF60] 2xl:flex-row flex-col 2xl:gap-0 gap-3 items-center text-center ${containerClassName || ''}`}
     >
       <div className="flex flex-row gap-[5px] min-w-0 flex-grow">
         <div className={`xl:px-[5px] lg:px-[4px] md:px-[3px] flex-shrink-0 ${className || ''}`}>{number}</div>

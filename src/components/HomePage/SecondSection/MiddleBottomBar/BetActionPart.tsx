@@ -39,8 +39,7 @@ const BetActionPart = () => {
   };
 
   return (
-    <div className="flex flex-col px-2 py-2 bg-[#2c3137] md:col-span-3 order-1 
-    md:text-[4.8px] lg:text-[6.4px] xl:text-[8px]">
+    <div className="flex flex-col px-2 py-2 w-[30%] bg-[#2c3137] md:text-[4.8px] lg:text-[6.4px] xl:text-[8px] flex-1">
       <ShadowButton
         className="flex justify-center items-center w-full py-2 md:py-2 bg-[#1c2127] rounded-[0.25rem]
                    text-[#f8bf60] font-montserrat font-bold text-xs leading-none whitespace-nowrap
@@ -50,21 +49,21 @@ const BetActionPart = () => {
         $100,000.00 ON WIN
       </ShadowButton>
 
-      <div className="flex flex-row gap-0.5 mt-2 text-white">
+      <div className="flex flex-row gap-0.5 mt-2 text-white overflow-x-auto">
         <div className="flex items-center justify-center px-4 py-4 bg-[#1c2127] rounded-l-[0.25rem] text-xs relative">
           <button className="flex flex-row items-center gap-[0.25rem] whitespace-nowrap">
             BET
             <Icon name="sortArrowDown" color="white" size={12} raw />
           </button>
         </div>
-        <div className="flex items-center justify-center px-4 flex-grow bg-[#1c2127] text-base relative">
+        <div className="flex items-center justify-center gap-1 px-4 bg-[#1c2127] text-base relative flex-grow">
           <input
             type="text"
             value={formatBet(bet)}
             onChange={handleBetChange}
-            className="w-full bg-transparent text-center outline-none"
+            className="w-20 text-center bg-transparent outline-none"
           />
-          <Icon name="diamondIcon" className="absolute right-4" color="#f8bf60" size={12} raw />
+          <Icon name="diamondIcon" color="#f8bf60" size={12} raw />
         </div>
         <button
           onClick={handleHalfBet}

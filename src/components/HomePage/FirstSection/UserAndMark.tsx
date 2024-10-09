@@ -23,10 +23,10 @@ const UserAndMark: FC<IUserAndMark> = ({
   return (
     <div
       className={`bg-[#171c22] p-[3px] leading-none
-      text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1rem] flex  px-[1rem] py-[0.5rem]
+      text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1rem] 2xl:gap-0 gap-3 flex 2xl:flex-row flex-col px-[1rem] py-[0.5rem] justify-between
       ${containerClassName || ''}`}
     >
-      <div className="flex flex-wrap w-[68%] items-center text-black gap-[3px]">
+      <div className="flex flex-wrap 2xl:w-[68%] w-full items-center text-black gap-[3px]">
         <div
           className={`flex flex-row gap-[2px] p-[3px] rounded-[4px] leading-0 justify-start items-center ${
             className || ''
@@ -61,7 +61,7 @@ const UserAndMark: FC<IUserAndMark> = ({
           {name}
         </div>
       </div>
-      <div className="flex flex-col w-[32%] text-right gap-[3px]">
+      <div className="flex flex-col items-start text-right gap-[3px]">
         <div className="py-[3px]">
           <span className="text-[#f8bf60]">$</span>
           {dValue < 1000000

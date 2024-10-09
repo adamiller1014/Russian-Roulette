@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 import { motion } from 'framer-motion';
 import Topbar from './Topbar';
@@ -6,8 +6,6 @@ import ScrollableComponent from '../../shared/ScrollbarComponent';
 import ChatItem from './ChatItem';
 import NotificationChatItem from './NotificationChatItem';
 import BottomBar from './BottomBar';
-
-const PlayButtonArea = lazy(() => import('../HomePage/ThirdSection/PlayButtonArea'));
 
 const Sidebar = ({ open, setOpen }) => {
   const [width, setWidth] = useState('0');
@@ -162,7 +160,7 @@ const Sidebar = ({ open, setOpen }) => {
       // transition={{ duration: 0 }}
     >
       <Topbar open={open} setOpen={setOpen} />
-      <ScrollableComponent height="calc(100vh - 140px)">
+      <ScrollableComponent height="calc(100vh - 250px)">
         <div className="flex flex-col w-full">
           {chats.map((c, i) =>
             c.type === 'notification' ? (
@@ -173,11 +171,7 @@ const Sidebar = ({ open, setOpen }) => {
           )}
         </div>
       </ScrollableComponent>
-      <div className='block xl:hidden'>
-        <PlayButtonArea />
-      </div>
       <BottomBar />
-      
     </motion.div>
   );
 };

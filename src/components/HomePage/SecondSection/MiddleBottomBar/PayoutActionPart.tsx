@@ -40,8 +40,7 @@ const PayoutActionPart = () => {
   };
 
   return (
-    <div className="flex flex-col px-2 py-2 bg-[#2c3137] md:order-3 order-2 md:col-span-3
-                    text-[10px] md:text-[4.8px] lg:text-[6.4px] xl:text-[8px]">
+    <div className="flex flex-col px-2 w-[30%] py-2 bg-[#2c3137] flex-1 text-[10px] md:text-[4.8px] lg:text-[6.4px] xl:text-[8px]">
       <div className="flex flex-row gap-0.5">
         <ShadowButton
           className={`flex justify-center items-center w-full basis-1/2 px-2 py-2 md:py-1
@@ -65,7 +64,7 @@ const PayoutActionPart = () => {
         </ShadowButton>
       </div>
 
-      <div className="flex flex-row gap-0.5 mt-2 text-white">
+      <div className="flex flex-row gap-0.5 mt-2 text-white  overflow-x-auto">
         <div className="flex items-center justify-center px-4 py-4
                         bg-[#1c2127] rounded-l-[0.25rem] text-xs relative">
           <button className="flex flex-row items-center gap-[0.25rem] whitespace-nowrap">
@@ -73,16 +72,15 @@ const PayoutActionPart = () => {
             <Icon name="sortArrowDown" color="white" size={12} raw />
           </button>
         </div>
-        <div className="flex items-center justify-center px-4 flex-grow
-                        bg-[#1c2127] text-base relative">
+        <div className="flex items-center justify-center gap-0.5 px-4 flex-grow
+                        bg-[#1c2127] text-base">
           <input
             type="text"
             value={formatPayout(payout)}
             onChange={handlePayoutChange}
-            className="w-full bg-transparent text-center outline-none"
+            className="w-20 text-center bg-transparent outline-none"
           />
-          <span className="absolute right-4 text-[#f8bf60]
-                           text-xs md:text-sm lg:text-base xl:text-lg">
+          <span className="text-[#f8bf60] -mt-1 flex text-xs md:text-sm lg:text-base xl:text-lg leading-none">
             x
           </span>
         </div>
