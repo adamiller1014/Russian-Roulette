@@ -61,7 +61,6 @@ const ThirdSection: React.FC = () => {
     <section className="xl:flex hidden flex-col gap-1 text-white xl:col-span-3 col-span-0 h-[calc(100vh-150px)]">
       <ErrorBoundary>
         <Suspense fallback={<LoadingFallback />}>
-          <div className="h-full ">
             <TopWinnersHeader />
             <TopWinnersList />
             <ShadowButton
@@ -77,7 +76,6 @@ const ThirdSection: React.FC = () => {
               onClose={handleCloseBonusModal}
               onSelectBonus={handleSelectBonus}
             />
-          </div>
         </Suspense>
       </ErrorBoundary>
     </section>

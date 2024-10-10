@@ -43,16 +43,16 @@ const SecondSection: React.FC = () => {
       <TotalWinDisplay />
       <MiddleBottomBar />
       <div className='flex w-full lg:hidden'>
-      <BetTypeSelector
-        selectedType={selectedBetType}
-        onTypeSelect={handleBetTypeSelect}
-        onBuyBonusClick={handleBuyBonusClick}
-      />
-      <BonusModal
-        isOpen={isBonusModalOpen}
-        onClose={handleCloseBonusModal}
-        onSelectBonus={handleSelectBonus}
-      />
+        <BetTypeSelector
+          selectedType={selectedBetType}
+          onTypeSelect={handleBetTypeSelect}
+          onBuyBonusClick={handleBuyBonusClick}
+        />
+        <BonusModal
+          isOpen={isBonusModalOpen}
+          onClose={handleCloseBonusModal}
+          onSelectBonus={handleSelectBonus}
+        />
       </div>
     </div>
   );

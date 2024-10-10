@@ -160,7 +160,7 @@ const Sidebar = ({ open, setOpen }) => {
       // transition={{ duration: 0 }}
     >
       <Topbar open={open} setOpen={setOpen} />
-      <ScrollableComponent height="calc(100vh - 250px)">
+      <ScrollableComponent height="calc(100vh - 150px)">
         <div className="flex flex-col w-full">
           {chats.map((c, i) =>
             c.type === 'notification' ? (
