@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Icon from '../../shared/Icon';
 import ScrollableComponent from '../../shared/ScrollbarComponent';
 import ShadowButton from '../../shared/ShadowButton';
@@ -6,14 +6,32 @@ import WalletModal from '../WalletModal/WalletModal';
 
 const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCurrentIndex }) => {
   const [isVisibleWalletModal, setIsVisibleWalletModal] = useState(false);
-  const address = "e60351d7c15799b6126eeeda3bced558d7d165ff7d3c11d071a5413719dcd4c1"; // Replace with the actual address
+  const address = 'e60351d7c15799b6126eeeda3bced558d7d165ff7d3c11d071a5413719dcd4c1'; // Replace with the actual address
+
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const formatTime = (date) => {
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+  };
 
   return (
-    <>
+    <div className="flex items-center justify-center text-white">
       <div
-        className="relative
-        xl:text-base lg:text-xs md:text-[9.6px] text-[10px]"
-      >
+        className="text-[black] flex justify-center items-center bg-[#f8bf60]
+        shadow-[0px_6px_0px_0px_rgba(153,122,73,1)] md:w-[5rem] w-[3rem] h-[2.375rem] rounded-l-[0.3rem] font-bold">
+        <p>{formatTime(currentTime)}</p>
+      </div>
+      <div className="relative h-[2.375rem] xl:text-base lg:text-xs md:text-[9.6px] text-[10px] ">
         <ShadowButton
           onClick={() => {
             setIsClicked(!isClicked);
@@ -21,11 +39,9 @@ const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCu
           className="hover:mix-blend-exclusion gap-[5px]
           flex justify-center items-center bg-[#2c3137]
           xl:shadow-[0px_6px_0px_0px_rgba(23,28,34,1)] lg:shadow-[0px_5px_0px_0px_rgba(23,28,34,1)] 
-          xl:w-[270px] xl:h-[38px] lg:w-[216px] md:h-[30.4px] md:w-[162px]
-          rounded-l-[6px]  w-[120px] h-[30px]
-          xl:rounded-l-[10px] lg:rounded-l-[8px] md:rounded-l-[6px]
-          truncate"
-        >
+          xl:w-[270px] lg:w-[216px] md:w-[162px]
+          w-[120px] h-full
+          truncate">
           {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
             .format(cryptoList[currentIndex])
             .replace('$', '')}
@@ -55,8 +71,7 @@ const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCu
         </ShadowButton>
         <div
           className={`transition-all duration-300 ease-in-out ${isClicked ? 'opacity-100' : 'opacity-0 pointer-events-none'} 
-          xl:rounded-[10px] lg:rounded-[8px] md:rounded-[6px] z-[2] absolute top-[100%] mt-[5px] bg-[#2c3137] w-full shadow-lg`}
-        >
+          xl:rounded-[10px] lg:rounded-[8px] md:rounded-[6px] z-[2] absolute top-[100%] mt-[5px] bg-[#2c3137] w-full shadow-lg`}>
           <ScrollableComponent className={`max-h-[200px] overflow-y-auto`}>
             {cryptoList &&
               cryptoList.length > 0 &&
@@ -67,8 +82,7 @@ const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCu
                     setCurrentIndex(i);
                     setIsClicked(false);
                   }}
-                  className="xl:h-[35px] md:h-[28px] hover:bg-[#171c22] border-[1px] border-[#171c22] w-full flex items-center justify-center transition-colors duration-200"
-                >
+                  className="xl:h-[35px] md:h-[28px] hover:bg-[#171c22] border-[1px] border-[#171c22] w-full flex items-center justify-center transition-colors duration-200">
                   {r}
                 </button>
               ))}
@@ -77,9 +91,8 @@ const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCu
       </div>
       <ShadowButton
         className="hover:mix-blend-difference text-[black] flex justify-center items-center bg-[#f8bf60]
-        shadow-[0px_6px_0px_0px_rgba(153,122,73,1)] w-[2.375rem] h-[2.375rem] rounded-r-[0.625rem]"
-        onClick={() => setIsVisibleWalletModal(true)}
-      >
+        shadow-[0px_6px_0px_0px_rgba(153,122,73,1)] w-[2.375rem] h-[2.375rem] rounded-r-[0.3rem]"
+        onClick={() => setIsVisibleWalletModal(true)}>
         <Icon
           name="wallet"
           color="black"
@@ -87,12 +100,12 @@ const HeaderWallet = ({ isClicked, setIsClicked, cryptoList, currentIndex, setCu
           raw
         />
       </ShadowButton>
-      <WalletModal 
-        isVisible={isVisibleWalletModal} 
-        setIsVisible={setIsVisibleWalletModal} 
+      <WalletModal
+        isVisible={isVisibleWalletModal}
+        setIsVisible={setIsVisibleWalletModal}
         address={address} // Pass the address prop here
       />
-    </>
+    </div>
   );
 };
 

@@ -30,7 +30,8 @@ import {
   FaLink,
   FaInfoCircle,
   FaDice,
-  FaLayerGroup
+  FaLayerGroup,
+  FaBell
 } from 'react-icons/fa';
 import { FaPencil, FaShield } from 'react-icons/fa6';
 import {
@@ -80,6 +81,7 @@ export const Icons = {
   iosArrowDown: FaSortDown,
   calendar: MdCalendarMonth,
   user: BiSolidUser,
+  notification: FaBell,
   twitter: FaTwitter,
   youtube: FaYoutube,
   instagram: FaInstagram,

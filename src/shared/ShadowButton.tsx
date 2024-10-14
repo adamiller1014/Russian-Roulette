@@ -22,12 +22,13 @@ const ShadowButton: FC<IShadowButtonProps> = ({
   bottomColor,
   ...rest
 }) => {
-  const buttonStyle = topColor && bottomColor
-    ? {
-        backgroundColor: topColor,
-        boxShadow: `0 6px 0 ${bottomColor}`,
-      }
-    : {};
+  const buttonStyle =
+    topColor && bottomColor
+      ? {
+          backgroundColor: topColor,
+          boxShadow: `0 6px 0 ${bottomColor}`
+        }
+      : {};
 
   return (
     <button
@@ -42,8 +43,7 @@ const ShadowButton: FC<IShadowButtonProps> = ({
       style={buttonStyle}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
-      {...rest}
-    >
+      {...rest}>
       {children}
     </button>
   );

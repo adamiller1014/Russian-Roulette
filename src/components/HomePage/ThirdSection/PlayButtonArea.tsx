@@ -17,7 +17,7 @@ const PlayButtonArea: React.FC = () => {
   const toggleBetListVisibility = useCallback(() => setIsVisible(prev => !prev), []);
 
   return (
-    <div className="bg-[#2C3137] flex w-[30%] justify-center items-center p-2 sm:p-3 md:p-4 relative flex-1">
+    <div className="bg-[#2C3137] flex w-full justify-center items-center p-2 sm:p-3 md:p-4 relative flex-1">
       <div className="flex w-full gap-0.5 h-full">
         <BetListButton
           isPlaying={isPlaying}

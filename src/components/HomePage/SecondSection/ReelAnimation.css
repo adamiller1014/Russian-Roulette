@@ -1,0 +1,148 @@
+ :root {
+            --primary-bg: #1a1a1a;
+            --secondary-bg: #000;
+            --border-color: #333;
+            --text-color: #fff;
+            --highlight-color: #ffd700;
+            --button-bg: #f1c40f;
+            --button-hover-bg: #000;
+            --button-hover-text: #f1c40f;
+            --item-width: clamp(20px, 8vw, 50px);
+            --item-height: clamp(20px, 8vw, 50px);
+            --container-width: min(100%, calc(var(--item-width) * 24));
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(1rem, 3vw, 2rem);
+            /* padding: clamp(0.5rem, 2vw, 1rem); */
+            width: 60%;
+            max-width: 1200px;
+        }
+
+        .roll-container {
+            width: var(--container-width);
+            height: var(--item-height);
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            background-color: var(--secondary-bg);
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .center-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background-color: var(--highlight-color);
+            z-index: 1;
+        }
+
+        .roll-items {
+            display: flex;
+            will-change: transform;
+            transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .item {
+            width: var(--item-width);
+            height: var(--item-height);
+            flex: 0 0 auto;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(0.6rem, 1vw, 1.2rem);
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            border: 1px solid var(--border-color);
+            background-color: rgba(51, 51, 51, 0.8);
+            transition: background-color 0.3s ease;
+            padding: 0 0.5em;
+            white-space: nowrap;
+        }
+
+        .multiplier-white { color: #fff; }
+        .multiplier-blue { color: #3498db; }
+        .multiplier-purple { color: #9b59b6; }
+        .multiplier-gold { color: #f1c40f; }
+
+        .item:hover {
+            background-color: rgba(75, 75, 75, 1);
+        }
+
+        .highlight {
+            animation: flash 1s infinite;
+        }
+
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .roll-items {
+                transition: none;
+            }
+            .play-button:hover {
+                transform: none;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--button-bg);
+            color: var(--text-color);
+            padding: 8px;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Improve touch target sizes for mobile */
+        @media (max-width: 768px) {
+            .play-button {
+                padding: 1rem 1.5rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* High contrast mode */
+        @media (forced-colors: active) {
+            .item {
+                border: 2px solid CanvasText;
+            }
+            .center-line {
+                background-color: CanvasText;
+            }
+        }
+
+        .play-button.repeating {
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }

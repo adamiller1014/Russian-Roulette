@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { lazy, useCallback, useState } from 'react';
 import MiddleTopBar from './MiddleTopBar';
 import BottomColorBoxList from './BottomColorBoxList';
@@ -42,7 +43,7 @@ const SecondSection: React.FC = () => {
       <BottomColorBoxList />
       <TotalWinDisplay />
       <MiddleBottomBar />
-      <div className='flex w-full lg:hidden'>
+      <div className="flex w-full lg:hidden">
         <BetTypeSelector
           selectedType={selectedBetType}
           onTypeSelect={handleBetTypeSelect}

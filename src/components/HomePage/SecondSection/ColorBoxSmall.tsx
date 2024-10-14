@@ -11,7 +11,7 @@ interface IColorBox {
 const ColorBoxSmall: FC<IColorBox> = ({ isBonus, color, containterClass, className, text }) => {
   return (
     <div
-      className={`relative ${containterClass || ''} rounded-[0.25rem] leading-none col-span-1  flex px-4 py-1 overflow-hidden ${
+      className={`relative ${containterClass || ''} rounded-[0.25rem] w-fit leading-none flex px-4 py-1 ${
         isBonus
           ? 'flex-col leading-none justify-center items-center'
           : 'flex-row leading-none justify-center items-center'
@@ -24,7 +24,7 @@ const ColorBoxSmall: FC<IColorBox> = ({ isBonus, color, containterClass, classNa
         </div>
       )}
       <span
-        className={`truncate leading-none text-center break-all
+        className={`leading-none text-center
         xl:text-lg lg:text-[12.8px] md:text-[9.6px] text-[8px] xs:text-[12px] 
         ${className || ''}`}
       >

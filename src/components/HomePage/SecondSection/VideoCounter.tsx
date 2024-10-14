@@ -18,7 +18,7 @@ const VideoCounter: React.FC<VideoCounterProps> = ({ counter, isShowVideo, playV
   }, [counter, isShowVideo, playVideo]);
 
   return (
-    <div className="!max-h-[100%] flex overflow-hidden md:h-[calc(100vh-28.5rem)] w-[full] bg-[#2c3137] justify-center items-center relative">
+    <div className="!max-h-[100%] flex overflow-hidden h-[calc(100vh-28.5rem)] w-[full] bg-[#2c3137] justify-center items-center relative">
       <div
         className={`flex w-full h-full absolute top-0 left-0 transition-opacity duration-300 ease-in-out bg-[#2c3137] justify-center items-center text-white xl:text-[12.5rem] md:text-[10rem] text-[80px] ${
           counter > 0.3 ? 'opacity-1' : 'opacity-0'

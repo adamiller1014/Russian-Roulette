@@ -65,8 +65,7 @@ const Header: React.FC = () => {
         className="w-full z-[1]
       h-[60px] 
       bg-[#1c2127] flex flex-row
-      shadow-[0px_0px_8px_0px_rgba(0,0,0,0.25)]"
-      >
+      shadow-[0px_0px_8px_0px_rgba(0,0,0,0.25)]">
         <div className="flex-1 flex pl-[15px] items-center">
           <img
             src={LogoImg}
@@ -75,29 +74,39 @@ const Header: React.FC = () => {
           />
           <img src={BetImg} alt="logo" className="h-[25px] cursor-pointer md:hidden flex" />
         </div>
-        <div className="flex-2 flex items-center justify-center text-white">
-          <HeaderWallet
-            cryptoList={cryptoList}
-            isClicked={isClicked}
-            setCurrentIndex={setCurrentIndex}
-            setIsClicked={setIsClicked}
-            currentIndex={currentIndex}
-          />
-        </div>
-        <div className="flex-1 flex flex-row gap-[5px] justify-end pr-[7px] items-center" ref={dropdownRef}>
+        <HeaderWallet
+          cryptoList={cryptoList}
+          isClicked={isClicked}
+          setCurrentIndex={setCurrentIndex}
+          setIsClicked={setIsClicked}
+          currentIndex={currentIndex}
+        />
+
+        <div
+          className="flex-1 flex flex-row gap-[20px] justify-end pr-[7px] items-center"
+          ref={dropdownRef}>
           <div
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             className="cursor-pointer relative"
             aria-haspopup="true"
-            aria-expanded={isDropdownOpen}
-          >
-            <Icon
-              name="user"
-              className="text-white
-            xl:h-[20px] lg:h-[16px] md:h-[16px]
-            xl:w-[20px] lg:w-[16px] md:w-[16px]"
-              raw
-            />
+            aria-expanded={isDropdownOpen}>
+            <Icon name="user" className="text-white h-[20px] w-[20px]" raw />
+            {isDropdownOpen && (
+              <UserDropdown
+                openWalletModal={openWalletModal}
+                openYieldTab={openYieldTab}
+                openAffiliateModal={openAffiliateModal}
+                openAccountModal={openAccountModal}
+                openUserStatsModal={openUserStatsModal} // Pass the function here
+              />
+            )}
+          </div>
+          <div
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="cursor-pointer relative"
+            aria-haspopup="true"
+            aria-expanded={isDropdownOpen}>
+            <Icon name="notification" className="text-white h-[18px] w-[18px]" raw />
             {isDropdownOpen && (
               <UserDropdown
                 openWalletModal={openWalletModal}
@@ -123,10 +132,7 @@ const Header: React.FC = () => {
         />
       )}
       {isUserStatsModalOpen && (
-        <UserStatsModal
-          isVisible={isUserStatsModalOpen}
-          setIsVisible={setIsUserStatsModalOpen}
-        />
+        <UserStatsModal isVisible={isUserStatsModalOpen} setIsVisible={setIsUserStatsModalOpen} />
       )}
       {isAffiliateModalOpen && (
         <AffiliateModal isVisible={isAffiliateModalOpen} setIsVisible={setIsAffiliateModalOpen} />

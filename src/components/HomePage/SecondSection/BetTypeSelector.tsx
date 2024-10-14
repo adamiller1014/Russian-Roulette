@@ -15,18 +15,20 @@ const BetTypeSelector: React.FC<BetTypeSelectorProps> = ({ selectedType, onTypeS
   };
 
   return (
-    <div className="bg-[#2c3137] flex flex-col gap-4 p-4 h-32 rounded-bl-lg w-full">
-      <div className="flex gap-3 xl:h-full h-1/2">
-      <ShadowButton
-        onClick={onBuyBonusClick}
-        className={`
-          ${buttonClasses.base}
-          bg-[#f8bf60] text-black shadow-[0_5px_0_0_rgba(153,122,73,1)] hover:brightness-110
-          rounded-b-md xl:hidden block basis-2/5
-        `}
-      >
-        BONUS
-      </ShadowButton>
+    <div className="flex w-full  md:h-16 h-14 gap-1 rounded-bl-lg md:text-base text-sm ">
+      <div className="flex flex-1 h-full gap-3 p-4 bg-[#2c3137]">
+        <ShadowButton
+          onClick={onBuyBonusClick}
+          className={`
+            ${buttonClasses.base}
+            bg-[#f8bf60] text-black shadow-[0_5px_0_0_rgba(153,122,73,1)] hover:brightness-110
+            rounded-md xl:hidden block basis-2/5
+          `}
+        >
+          BONUS
+        </ShadowButton>
+      </div>
+      <div className="flex flex-1 h-full p-4 bg-[#2c3137]">
         {(['GROUP', 'SOLO'] as const).map((type) => (
           <ShadowButton
             key={type}
@@ -34,14 +36,13 @@ const BetTypeSelector: React.FC<BetTypeSelectorProps> = ({ selectedType, onTypeS
             className={`
               ${buttonClasses.base}
               ${selectedType === type ? buttonClasses.active : buttonClasses.inactive}
-              ${type === 'GROUP' ? 'rounded-tl-md' : 'rounded-tr-md'}
+              ${type === 'GROUP' ? 'rounded-tl-md rounded-bl-md' : 'rounded-tr-md rounded-br-md'}
             `}
           >
             {type}
           </ShadowButton>
         ))}
       </div>
-      
     </div>
   );
 };

@@ -44,45 +44,42 @@ const BetActionPart = () => {
         className="flex justify-center items-center w-full py-2 md:py-2 bg-[#1c2127] rounded-[0.25rem]
                    text-[#f8bf60] font-montserrat font-bold text-xs leading-none whitespace-nowrap
                    hover:bg-[#21262c] hover:shadow-[0px_4px_0px_0px_rgba(29,32,34,1)]
-                   shadow-[0px_4px_0px_0px_rgba(33,38,44,1)]"
-      >
+                   shadow-[0px_4px_0px_0px_rgba(33,38,44,1)]">
         $100,000.00 ON WIN
       </ShadowButton>
 
-      <div className="flex flex-row gap-0.5 mt-2 text-white overflow-x-auto">
-        <div className="flex items-center justify-center px-4 py-4 bg-[#1c2127] rounded-l-[0.25rem] text-xs relative">
+      <div className="flex flex-row gap-0.5 mt-2 text-white w-full">
+        <div className="flex items-center justify-center px-4 py-4 bg-[#1c2127] rounded-l-[0.25rem] text-xs relative w-[30%]">
           <button className="flex flex-row items-center gap-[0.25rem] whitespace-nowrap">
             BET
             <Icon name="sortArrowDown" color="white" size={12} raw />
           </button>
         </div>
-        <div className="flex items-center justify-center gap-1 px-4 bg-[#1c2127] text-base relative flex-grow">
+        <div className="flex items-center 2xl:justify-center justify-start gap-1 px-4 bg-[#1c2127] 2xl:text-base text-sm relative flex-grow w-[40%]">
           <input
             type="text"
             value={formatBet(bet)}
             onChange={handleBetChange}
-            className="w-20 text-center bg-transparent outline-none"
+            className="w-full bg-transparent outline-none xl:text-center text-start"
           />
-          <Icon name="diamondIcon" color="#f8bf60" size={12} raw />
+          <Icon name="diamondIcon" color="#f8bf60" size={12} raw className='absolute right-[5px] 2xl:right-[15%] 3xl:right-[20%]'/>
         </div>
         <button
           onClick={handleHalfBet}
           className="flex items-center justify-center px-4 bg-[#1c2127] text-xs whitespace-nowrap
-                     transition-transform transform active:scale-90"
-        >
+                     transition-transform transform active:scale-90 w-[15%]">
           ÷2
         </button>
         <button
           onClick={handleDoubleBet}
           className="flex items-center justify-center px-4 bg-[#1c2127] text-xs whitespace-nowrap rounded-r-[5px]
-                     transition-transform transform active:scale-90"
-        >
+                     transition-transform transform active:scale-90 w-[15%]">
           x2
-        </button>       
+        </button>
       </div>
-      <SliderComponent 
-        sliderValue={sliderValue} 
-        setSliderValue={handleSliderChange} 
+      <SliderComponent
+        sliderValue={sliderValue}
+        setSliderValue={handleSliderChange}
         maxValue={maxValue}
       />
     </div>
