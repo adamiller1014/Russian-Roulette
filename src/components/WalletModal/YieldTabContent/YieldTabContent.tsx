@@ -18,13 +18,13 @@ const YieldTabContent: React.FC<YieldTabContentProps> = ({ tab }) => {
   }, [tab]);
 
   const tabs = [
-    ['STAKE POOL', '(+72.78K% APY)'],
     ['WAGER POOL', '(+210.50K% APY)'],
-    ['AFFILIATE POOL', '(+72.78K% APY)']
+    ['AFFILIATE POOL', '(+72.78K% APY)'],
+    ['STAKE POOL', '(+72.78K% APY)']
   ];
-  
+
   return (
-    <div className="flex flex-col md:gap-4 gap-2">
+    <div className="flex flex-col gap-2 md:gap-4">
       <div className="flex flex-row mx-4 h-[3rem]">
         {tabs.map((t, i) => (
           <TabItemButton
@@ -35,7 +35,7 @@ const YieldTabContent: React.FC<YieldTabContentProps> = ({ tab }) => {
             setTab={setSubTab}
             className=""
             title={
-              <div className="flex flex-col justify-center items-center">
+              <div className="flex flex-col items-center justify-center">
                 <span>{t[0]}</span>
                 <span>{t[1]}</span>
               </div>
@@ -46,11 +46,11 @@ const YieldTabContent: React.FC<YieldTabContentProps> = ({ tab }) => {
       </div>
       <div className="flex flex-col gap-4 mx-4">
         <DividerDiv className="!bg-[#1c2127]" />
-        {subTab === 0 ? <StakeSubTabContent /> : ''}
-        {subTab === 1 ? <WagerSubTabContent /> : ''}
-        {subTab === 2 ? <AffiliateSubTabContent /> : ''}
+        {subTab === 2 ? <StakeSubTabContent /> : ''}
+        {subTab === 0 ? <WagerSubTabContent /> : ''}
+        {subTab === 1 ? <AffiliateSubTabContent /> : ''}
       </div>
-      
+
       <DividerDiv className="!bg-[#1c2127]" />
       <YieldTabContentFooter />
     </div>

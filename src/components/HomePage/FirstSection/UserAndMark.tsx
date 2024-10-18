@@ -23,14 +23,13 @@ const UserAndMark: FC<IUserAndMark> = ({
   return (
     <div
       className={`bg-[#171c22] p-[3px] leading-none
-      text-[1rem] md:text-[1rem] lg:text-[1rem] xl:text-[1rem] 2xl:gap-0 gap-3 flex 2xl:flex-row flex-col px-[1rem] py-[0.5rem] justify-between
+      text-[0.75rem] md:text-[0.75rem] lg:text-[0.875rem] xl:text-[1rem] 2xl:gap-0 gap-3 flex 2xl:flex-row flex-col px-[1rem] py-[0.5rem] justify-between
       ${containerClassName || ''}`}
     >
       <div className="flex flex-wrap 2xl:w-[68%] w-full items-center text-black gap-[3px]">
         <div
-          className={`flex flex-row gap-[2px] p-[3px] rounded-[4px] leading-0 justify-start items-center ${
-            className || ''
-          }`}
+          className={`flex flex-row gap-[2px] p-[3px] rounded-[4px] leading-0 justify-start items-center ${className || ''
+            }`}
           style={{
             backgroundColor:
               type === 'blue'
@@ -66,16 +65,16 @@ const UserAndMark: FC<IUserAndMark> = ({
           <span className="text-[#f8bf60]">$</span>
           {dValue < 1000000
             ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-                .format(dValue)
-                .replace('$', '')
+              .format(dValue)
+              .replace('$', '')
             : dValue / 1000000 + 'M'}
         </div>
         <div className="py-[3px]">
           <span className="text-[#f8bf60]">x</span>
           {xValue < 1000000
             ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-                .format(xValue)
-                .replace('$', '')
+              .format(xValue)
+              .replace('$', '')
             : xValue / 1000000 + 'M'}
         </div>
       </div>

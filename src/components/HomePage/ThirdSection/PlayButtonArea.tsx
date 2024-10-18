@@ -18,18 +18,41 @@ const PlayButtonArea: React.FC = () => {
 
   return (
     <div className="bg-[#2C3137] flex w-full justify-center items-center p-2 sm:p-3 md:p-4 relative flex-1">
-      <div className="flex w-full gap-0.5 h-full">
+      <div className="flex lg:hidden w-full gap-0.5 h-full xl:flex">
         <BetListButton
           isPlaying={isPlaying}
           isVisible={isVisible}
           setIsVisible={toggleBetListVisibility}
         />
         <PlayButton isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
-        <AutoPlayButton 
-          isPlaying={isPlaying} 
-          isOpenAutoPlaySetting={isOpenAutoPlaySetting} 
+        <AutoPlayButton
+          isPlaying={isPlaying}
+          isOpenAutoPlaySetting={isOpenAutoPlaySetting}
           setIsOpenAutoPlaySetting={toggleAutoPlaySetting}
         />
+
+        {isOpenAutoPlaySetting && (
+          <div className="absolute right-0 z-10 bottom-full">
+            <AutoPlayBar className="p-2 rounded-md" />
+          </div>
+        )}
+      </div>
+      <div className="xl:hidden lg:block hidden w-full gap-0.5 h-full">
+        <PlayButton isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+        <div className='w-full mt-[12px]'>
+          <div className='grid grid-cols-2 gap-2'>
+            <BetListButton
+              isPlaying={isPlaying}
+              isVisible={isVisible}
+              setIsVisible={toggleBetListVisibility}
+            />
+            <AutoPlayButton
+              isPlaying={isPlaying}
+              isOpenAutoPlaySetting={isOpenAutoPlaySetting}
+              setIsOpenAutoPlaySetting={toggleAutoPlaySetting}
+            />
+          </div>
+        </div>
 
         {isOpenAutoPlaySetting && (
           <div className="absolute right-0 z-10 bottom-full">

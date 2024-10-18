@@ -15,7 +15,7 @@ const StakeSubTabContent = () => {
   const maxValue = 1000.00; // Static max value for now
 
   return (
-    <div className="max-h-[800px]">
+    <div className="max-h-[500px] overflow-auto">
       <div className="flex flex-col gap-4">
         <NextRewardTime />
         <DividerDiv className="!bg-[#1c2127]" />
@@ -33,11 +33,20 @@ const StakeSubTabContent = () => {
         <DividerDiv className="!bg-[#1c2127]" />
         <Button
           className="bg-[#f8bf60] text-black
-      flex items-center
-      px-4 mb-2
-      rounded-[5px]
-      h-[3rem] !justify-between w-full
-      font-montserrat font-bold"
+            px-4 mb-2
+            rounded-[5px]
+            h-[3rem] !justify-between w-full
+            font-montserrat font-bold text-[20px] text-center"
+        >
+          Stake
+        </Button>
+        <Button
+          className="bg-[#f8bf60] text-black
+            flex items-center
+            px-4 mb-2
+            rounded-[5px]
+            h-[3rem] !justify-between w-full
+            font-montserrat font-bold"
         >
           Your Stakes
           <Icon name="openInNew" size={14} />

@@ -1,3 +1,4 @@
+import Button from '../../../shared/Button';
 import CampaignSelection from '../CampaignSelection';
 import ReferralsTable from '../ReferralsTable';
 
@@ -42,6 +43,12 @@ const ReferralsTab = () => {
     <>
       <CampaignSelection />
       <ReferralsTable headers={headers} list={list} />
+      <Button
+        className="bg-[#f8bf60] text-black rounded-[6px]
+                h-[40px]"
+      >
+        STAKE COMMISSION
+      </Button>
     </>
   );
 };

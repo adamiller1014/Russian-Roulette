@@ -11,14 +11,18 @@ const PlayButton: React.FC<PlayButtonProps> = React.memo(({ isPlaying, setIsPlay
     disabled={isPlaying}
     onClick={() => setIsPlaying(true)}
     className={`
-      text-[2rem] lg:text-[1rem] xl:text-[1.75rem] 2xl:text-[2rem] 
-      basis-[60%] h-full
-      leading-none font-montserrat font-bold text-black flex items-center justify-center
+      text-[24px] lg:text-[36px] xl:text-[2rem] 
+      xl:rounded-none
+      lg:rounded-lg
+      basis-[60%] 
+      leading-none font-montserrat font-bold w-full text-black flex items-center justify-center
       px-2
-      ${
-        isPlaying
-          ? 'bg-[#767676] shadow-[0px_6px_0px_0px_rgba(82,86,89,1)] !transform-none'
-          : 'bg-[#f8bf60] hover:mix-blend-difference shadow-[0px_6px_0px_0px_rgba(153,122,73,1)]'
+      xl:h-full
+      lg:h-[70%]
+      h-full
+      ${isPlaying
+        ? 'bg-[#767676] shadow-[0px_6px_0px_0px_rgba(82,86,89,1)] !transform-none'
+        : 'bg-[#f8bf60] hover:mix-blend-difference shadow-[0px_6px_0px_0px_rgba(153,122,73,1)]'
       }`}>
     PLAY
   </ShadowButton>

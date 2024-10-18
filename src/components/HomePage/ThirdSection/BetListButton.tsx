@@ -12,7 +12,7 @@ const BetListButton: React.FC<BetListButtonProps> = React.memo(({ isPlaying, isV
   <ShadowButton
     disabled={isPlaying}
     onClick={() => setIsVisible(!isVisible)}
-    className={`basis-[20%] rounded-l-[5px] flex justify-center items-center px-2 ${isPlaying ? 'bg-[#767676] shadow-[0px_6px_0px_0px_rgba(82,86,89,1)] !transform-none' : 'bg-[#f8bf60] hover:mix-blend-difference shadow-[0px_6px_0px_0px_rgba(153,122,73,1)]'}`}
+    className={`basis-[20%] rounded-l-[5px] w-full flex justify-center items-center px-2 ${isPlaying ? 'bg-[#767676] shadow-[0px_6px_0px_0px_rgba(82,86,89,1)] !transform-none' : 'bg-[#f8bf60] hover:mix-blend-difference shadow-[0px_6px_0px_0px_rgba(153,122,73,1)]'}`}
   >
     <Icon
       name={isVisible ? "Close" : "layerGroup"}

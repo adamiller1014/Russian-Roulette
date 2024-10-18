@@ -6,13 +6,13 @@ const StatsTable = () => {
       className="grid grid-cols-7
         gap-x-[1px] gap-y-[3px] text-center"
     >
-      <div className="py-[5px] bg-[#F8BF60] rounded-tl-[5px]">GAMES</div>
-      <div className="py-[5px] bg-[#F8BF60] text-black">BETS</div>
-      <div className="py-[5px] bg-[#F8BF60] text-black">WAGERED</div>
-      <div className="py-[5px] bg-[#F8BF60] text-black">PROFIT</div>
-      <div className="py-[5px] bg-[#F8BF60] text-black">PROFIT ATH</div>
-      <div className="py-[5px] bg-[#F8BF60] text-black">BALANCE</div>
-      <div className="py-[5px] bg-[#F8BF60] rounded-tr-[5px]">BALACE ATH</div>
+      <div className="py-[5px] bg-[#F8BF60] font-bold text-black rounded-tl-[5px]">GAMES</div>
+      <div className="py-[5px] bg-[#F8BF60] font-bold text-black">BETS</div>
+      <div className="py-[5px] bg-[#F8BF60] font-bold text-black">WAGERED</div>
+      <div className="py-[5px] bg-[#F8BF60] font-bold text-black">PROFIT</div>
+      <div className="py-[5px] bg-[#F8BF60] font-bold text-black">PROFIT ATH</div>
+      <div className="py-[5px] bg-[#F8BF60] font-bold text-black">BALANCE</div>
+      <div className="py-[5px] bg-[#F8BF60] font-bold text-black rounded-tr-[5px]">BALACE ATH</div>
 
       <div className="py-[5px] bg-[#1C2127]">
         {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })

@@ -8,17 +8,17 @@ interface AutoPlayButtonProps {
   setIsOpenAutoPlaySetting: (isOpen: boolean) => void;
 }
 
-const AutoPlayButton: React.FC<AutoPlayButtonProps> = React.memo(({ 
-  isPlaying, 
-  isOpenAutoPlaySetting, 
-  setIsOpenAutoPlaySetting 
+const AutoPlayButton: React.FC<AutoPlayButtonProps> = React.memo(({
+  isPlaying,
+  isOpenAutoPlaySetting,
+  setIsOpenAutoPlaySetting
 }) => (
   <ShadowButton
     disabled={isPlaying}
     onClick={() => setIsOpenAutoPlaySetting(!isOpenAutoPlaySetting)}
     className={`
       basis-[20%] rounded-r-[5px]
-      flex items-center justify-center
+      flex items-center justify-center w-full
       px-2
       ${isPlaying
         ? 'bg-[#767676] shadow-[0px_6px_0px_0px_rgba(82,86,89,1)] !transform-none'

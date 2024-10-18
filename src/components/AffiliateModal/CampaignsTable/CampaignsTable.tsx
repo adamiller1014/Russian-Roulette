@@ -20,7 +20,7 @@ const CampaignsTable = ({ headers, list }) => {
         ))}
       </div>
       <ScrollableComponent className="w-full max-h-[calc(100vh-595px)]">
-        <div className={`gap-y-[4px]  w-full grid grid-cols-8`}>
+        <div className="w-full grid gap-y-[4px]">
           {list.map((h, i) => (
             <CampaignsTableRow key={i} tRow={h} />
           ))}

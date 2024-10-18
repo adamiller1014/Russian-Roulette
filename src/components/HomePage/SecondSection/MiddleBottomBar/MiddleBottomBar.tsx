@@ -13,7 +13,7 @@ const MiddleBottomBar = () => {
         </div>
         <PayoutActionPart />
       </div>
-      <div className="flex w-full md:h-20 h-16 lg:hidden">
+      <div className="flex w-full h-16 md:h-20 lg:hidden">
         <PlayButtonArea />
       </div>
     </div>

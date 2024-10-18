@@ -15,19 +15,7 @@ const BetTypeSelector: React.FC<BetTypeSelectorProps> = ({ selectedType, onTypeS
   };
 
   return (
-    <div className="flex w-full  md:h-16 h-14 gap-1 rounded-bl-lg md:text-base text-sm ">
-      <div className="flex flex-1 h-full gap-3 p-4 bg-[#2c3137]">
-        <ShadowButton
-          onClick={onBuyBonusClick}
-          className={`
-            ${buttonClasses.base}
-            bg-[#f8bf60] text-black shadow-[0_5px_0_0_rgba(153,122,73,1)] hover:brightness-110
-            rounded-md xl:hidden block basis-2/5
-          `}
-        >
-          BONUS
-        </ShadowButton>
-      </div>
+    <div className="flex w-full gap-1 text-sm rounded-bl-lg md:h-16 h-14 md:text-base ">
       <div className="flex flex-1 h-full p-4 bg-[#2c3137]">
         {(['GROUP', 'SOLO'] as const).map((type) => (
           <ShadowButton
@@ -42,6 +30,18 @@ const BetTypeSelector: React.FC<BetTypeSelectorProps> = ({ selectedType, onTypeS
             {type}
           </ShadowButton>
         ))}
+      </div>
+      <div className="flex flex-1 h-full gap-3 p-4 bg-[#2c3137]">
+        <ShadowButton
+          onClick={onBuyBonusClick}
+          className={`
+            ${buttonClasses.base}
+            bg-[#f8bf60] text-black shadow-[0_5px_0_0_rgba(153,122,73,1)] hover:brightness-110
+            rounded-md xl:hidden block basis-2/5
+          `}
+        >
+          BONUS
+        </ShadowButton>
       </div>
     </div>
   );

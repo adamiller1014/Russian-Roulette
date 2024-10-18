@@ -4,6 +4,7 @@ import WalletSelection from '../CashierTabContent/WalletSelection';
 import CheckBox from './Checkbox';
 import AmountInput from '../../../shared/AmountInput';
 import UsernameInput from '../../../shared/UsernameInput';
+import Icon from '../../../shared/Icon';
 
 const TipTabContent = () => {
   const [isPrivate, setIsPrivate] = useState(false);
@@ -18,15 +19,15 @@ const TipTabContent = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 mx-4 items-center justify-center">
+    <div className="flex flex-col items-center justify-center gap-4 mx-4">
       <WalletSelection type="diamondIcon" />
-      <UsernameInput 
-        value={username} 
-        onChange={setUsername} 
+      <UsernameInput
+        value={username}
+        onChange={setUsername}
         label="Username" // Add this line
       />
-      <AmountInput value={amount} onChange={setAmount} maxValue={1000.00} />
-      <div className="flex flex-row gap-2 w-full items-center">
+      <AmountInput value={amount} onChange={setAmount} maxValue={1000.00} icon={<Icon name="bitcoin" raw color="#f8bf60" size={14} />} />
+      <div className="flex flex-row items-center w-full gap-2">
         <button
           onClick={() => setIsPrivate(true)}
           className={`${isPrivate ? 'text-white' : 'text-gray-400'}`}

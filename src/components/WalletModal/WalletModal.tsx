@@ -38,10 +38,10 @@ const WalletModal: React.FC<WalletModalProps> = ({ isVisible, setIsVisible, addr
           <DividerDiv className="!bg-[#1c2127]" />
         </div>
         {mainTab === 0 && (
-          <CashierTabContent 
-            tab={cashierSubTab} 
-            setTab={setCashierSubTab} 
-            address={address} 
+          <CashierTabContent
+            tab={cashierSubTab}
+            setTab={setCashierSubTab}
+            address={address}
           />
         )}
         {mainTab === 1 && <GemsTabContent tab={mainTab} address={address} />}

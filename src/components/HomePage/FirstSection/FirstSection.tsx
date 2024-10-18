@@ -40,7 +40,7 @@ const FirstSection: React.FC = () => {
       <Suspense fallback={<div className={sharedStyles.skeleton}>Loading...</div>}>
         <BetsHeader />
         <BetsContent />
-        <BetTypeSelector 
+        <BetTypeSelector
           selectedType={selectedBetType}
           onTypeSelect={handleBetTypeSelect}
           onBuyBonusClick={handleBuyBonusClick}

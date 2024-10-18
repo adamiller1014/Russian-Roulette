@@ -5,7 +5,7 @@ const CurrentXpBar = () => {
     <div className="flex flex-row h-[40px] gap-x-[10px]">
       <div className="text-[white] flex-none flex flex-col justify-center items-center g-y-0 ml-[15px] mr-[5px]">
         <span
-          className="leading-none
+          className="leading-none text-[#f8bf60]
         text-[8px] md:text-[12px] lg:text-[16px] xl:text-[20px]"
         >
           200%
@@ -30,7 +30,7 @@ const CurrentXpBar = () => {
         <XPBar width={100 + '%'} color="#f8bf60" containterClass="!h-[3px] md:!h-[7px]" />
       </div>
       <div className="text-[white] flex-none flex flex-col justify-center items-center g-y-0 gap-x-[5px]">
-        <span className="leading-none text-[8px] md:text-[12px] lg:text-[16px] xl:text-[20px]">
+        <span className="leading-none text-[8px] md:text-[12px] lg:text-[16px] xl:text-[20px] text-[#f8bf60]">
           250%
         </span>
         <span
@@ -73,7 +73,7 @@ const CurrentXpBar = () => {
         />
       </div>
       <div className="text-[white] flex-none flex flex-col justify-center items-center g-y-0 gap-x-[5px] ml-[5px] mr-[15px]">
-        <span className="leading-none text-[8px] md:text-[12px] lg:text-[16px] xl:text-[20px]">
+        <span className="leading-none text-[8px] md:text-[12px] lg:text-[16px] xl:text-[20px] text-[#f8bf60]">
           5
         </span>
         <span

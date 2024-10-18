@@ -10,6 +10,7 @@ import WalletModal from '../WalletModal/WalletModal';
 import AffiliateModal from '../AffiliateModal/AffiliateModal';
 import AccountModal from '../AccountModal/AccountModal';
 import UserStatsModal from '../../components/UserStatsPage/UserStatsModal';
+import StakesModal from '../StakesModal';
 
 const Header: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -18,9 +19,12 @@ const Header: React.FC = () => {
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
   const [isUserStatsModalOpen, setIsUserStatsModalOpen] = useState(false);
   const [isYieldTabOpen, setIsYieldTabOpen] = useState(false);
+  const [isVisibleStakesModal, setIsVisibleStakesModal] = useState(false);
+  const [isVisibleWalletModal, setIsVisibleWalletModal] = useState(false);
+  const address = 'e60351d7c15799b6126eeeda3bced558d7d165ff7d3c11d071a5413719dcd4c1'; // Replace with the actual address
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const [cryptoList] = useState([1000000, 23422323, 23242123]);
+  const [cryptoList] = useState([{ amount: 1000, type: "gems" }, { amount: 2343, type: "btc" }, { amount: 23242, type: "eth" }, { amount: 2123, type: "dai" }]);
   const [isClicked, setIsClicked] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const level = 74;
@@ -61,6 +65,12 @@ const Header: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col xl:text-[14px] lg:text-[11.2px] md:text-[8.4px] text-[8px]">
+      <StakesModal isVisible={isVisibleStakesModal} setIsVisible={setIsVisibleStakesModal} />
+      <WalletModal
+        isVisible={isVisibleWalletModal}
+        setIsVisible={setIsVisibleWalletModal}
+        address={address}
+      />
       <div
         className="w-full z-[1]
       h-[60px] 
@@ -80,14 +90,17 @@ const Header: React.FC = () => {
           setCurrentIndex={setCurrentIndex}
           setIsClicked={setIsClicked}
           currentIndex={currentIndex}
+          setIsVisibleStakesModal={setIsVisibleStakesModal}
+          isVisibleStakesModal={isVisibleStakesModal}
+          setIsVisibleWalletModal={setIsVisibleWalletModal}
         />
 
         <div
-          className="flex-1 flex flex-row gap-[20px] justify-end pr-[7px] items-center"
+          className="flex-1 flex flex-row gap-[20px] justify-end pr-[20px] items-center"
           ref={dropdownRef}>
           <div
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="cursor-pointer relative"
+            className="relative cursor-pointer"
             aria-haspopup="true"
             aria-expanded={isDropdownOpen}>
             <Icon name="user" className="text-white h-[20px] w-[20px]" raw />
@@ -102,20 +115,10 @@ const Header: React.FC = () => {
             )}
           </div>
           <div
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="cursor-pointer relative"
+            className="relative cursor-pointer"
             aria-haspopup="true"
             aria-expanded={isDropdownOpen}>
             <Icon name="notification" className="text-white h-[18px] w-[18px]" raw />
-            {isDropdownOpen && (
-              <UserDropdown
-                openWalletModal={openWalletModal}
-                openYieldTab={openYieldTab}
-                openAffiliateModal={openAffiliateModal}
-                openAccountModal={openAccountModal}
-                openUserStatsModal={openUserStatsModal} // Pass the function here
-              />
-            )}
           </div>
         </div>
       </div>

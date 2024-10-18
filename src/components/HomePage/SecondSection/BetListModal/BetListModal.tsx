@@ -16,7 +16,7 @@ const BetListModal = ({
   return (
     <>
       <Modal
-        classNames="lg:w-[450px] md:w-[400px] w-[98%] !gap-0"
+        classNames="lg:w-[450px] md:w-[400px] w-[98%] !gap-0 text-white"
         showCloseButton
         onClose={() => {
           setIsVisible(false);

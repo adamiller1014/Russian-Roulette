@@ -12,7 +12,7 @@ const ReelAnimation: React.FC = () => {
   const [isRolling, setIsRolling] = useState(false);
 
   const { isPlaying, setIsPlaying } = useMain();
-  const [ammoes, setAmmoes] = useState(0);
+  const [ammoes, setAmmoes] = useState(1);
 
   useEffect(() => {
     if (ammoes > 0 && ammoes < 4) {
@@ -133,26 +133,26 @@ const ReelAnimation: React.FC = () => {
         className="h-auto !w-[100%] !static"
         containerClasses="flex-none h-auto w-[4rem] xl:w-[10rem] lg:w-[5rem] md:w-[4rem] justify-center md:flex items-center ml-4 mr-2"
       />
-    <section className="container" aria-labelledby="reel-title">
-      <h2 id="reel-title" className="sr-only">
-        Multiplier Reel
-      </h2>
-      <div
-        className="roll-container"
-        role="region"
-        aria-live="polite"
-        aria-atomic="true"
-        ref={rollContainerRef}>
-        <div className="center-line" aria-hidden="true"></div>
-        <div className="roll-items" ref={rollItemsRef}></div>
-      </div>
-      
-    </section>
-    <div className="h-full px-[0.2rem] md:px-[0.5rem] md:gap-[0.5rem] gap-[0.2rem] py-[0.5rem] justify-center flex items-center mx-2">
-          {[0, 1, 2, 3, 4, 5].map((i) => (
-            <AmmoItem key={i} isFull={ammoes > i} />
-          ))}
+      <section className="container" aria-labelledby="reel-title">
+        <h2 id="reel-title" className="sr-only">
+          Multiplier Reel
+        </h2>
+        <div
+          className="roll-container"
+          role="region"
+          aria-live="polite"
+          aria-atomic="true"
+          ref={rollContainerRef}>
+          <div className="center-line" aria-hidden="true"></div>
+          <div className="roll-items" ref={rollItemsRef}></div>
         </div>
+
+      </section>
+      <div className="h-full px-[0.2rem] md:px-[0.5rem] md:gap-[0.5rem] gap-[0.2rem] py-[0.5rem] justify-center flex items-center mx-2">
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <AmmoItem key={i} isFull={ammoes > i} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -3,14 +3,17 @@ import Button from '../../../shared/Button';
 import Icon from '../../../shared/Icon';
 import AmountInput from '../../../shared/AmountInput';
 import UsernameInput from '../../../shared/UsernameInput';
+import CoinSelection from './CoinSelection';
 
 const WithdrawTabContent = () => {
   const [amount, setAmount] = useState(0);
   const [address, setAddress] = useState('');
   const maxValue = 1000.00; // Static max value for now
+  const coins = ['1000', '1234', '1423'];
 
   return (
-    <div className="flex flex-col gap-4 items-center justify-center">
+    <div className="flex flex-col items-center justify-center gap-4">
+      <CoinSelection classNames="px-[8rem] !bg-[#1c2127]" coins={coins} />
       <UsernameInput
         value={address}
         onChange={setAddress}

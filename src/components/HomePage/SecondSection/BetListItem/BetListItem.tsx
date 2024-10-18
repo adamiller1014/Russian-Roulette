@@ -1,7 +1,7 @@
 const BetListItem = ({ className, dValue, xValue, xValue2 }) => {
   return (
     <div
-      className={`flex flex-col justify-center items-center
+      className={`flex flex-col justify-center items-center text-white
         bg-[#1c2127] p-[3px] ${className || ''}`}
     >
       <div className="flex justify-center">

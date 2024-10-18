@@ -29,7 +29,7 @@ const AmountInput: React.FC<AmountInputProps> = ({ value, onChange, maxValue, la
   };
 
   return (
-    <div className="flex flex-col w-full items-center">
+    <div className="flex flex-col items-center w-full">
       <div className={`flex flex-row w-full items-center bg-[#1c2127] rounded-md relative ${isAmountFocused ? 'border border-[#f8bf60]' : ''}`}>
         <label
           className={`absolute transition-all duration-300 transform px-1 cursor-text ${isAmountFocused || value ? 'text-white left-4 top-1/2 -translate-y-1/2' : 'text-gray-400 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'}`}
@@ -41,7 +41,7 @@ const AmountInput: React.FC<AmountInputProps> = ({ value, onChange, maxValue, la
           id={label}
           type="text"
           name={label}
-          className="border-none outline-none bg-transparent text-center w-full rounded-md px-4 h-12 text-base"
+          className="w-full h-12 px-4 text-base text-center bg-transparent border-none rounded-md outline-none"
           placeholder={placeholder}
           value={value === 0 ? '' : value.toString()}
           onChange={handleAmountChange}
@@ -49,9 +49,9 @@ const AmountInput: React.FC<AmountInputProps> = ({ value, onChange, maxValue, la
           onBlur={() => setIsAmountFocused(false)}
           style={{ cursor: 'text' }}
         />
-        {icon && <div className="absolute right-4">{icon}</div>}
+        {icon && isAmountFocused && <div className="absolute right-4" >{icon}</div>}
       </div>
-      {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
       <SliderComponent sliderValue={value} setSliderValue={onChange} maxValue={maxValue} />
     </div>
   );

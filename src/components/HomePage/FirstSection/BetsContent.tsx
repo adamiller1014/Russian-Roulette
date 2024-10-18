@@ -26,9 +26,9 @@ const BetsContent: React.FC = () => {
 
   return (
     <div className="relative">
-      <ScrollableComponent 
-        height="calc(100vh - 24rem)" 
-        onOverflowChange={setIsOverflowing} 
+      <ScrollableComponent
+        height="calc(100vh - 24rem)"
+        onOverflowChange={setIsOverflowing}
         scrollableRef={scrollableRef}
         className="bg-[#2C3137]"
       >

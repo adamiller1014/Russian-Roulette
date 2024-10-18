@@ -12,13 +12,13 @@ const LevelBar = ({ level }) => {
         className="text-[#cd5334] flex-none flex flex-row justify-center items-center gap-[5px] ml-[10px]
       text-[7px] md:text-[12px] lg:text-[16px] xl:text-[20px]"
       >
-        LEVEL {level}
+        {level}
         <Icon
           name="star"
           color="#cd5334"
           className="xl:h-[14px] lg:h-[11.2px] md:h-[8.4px]
           xl:w-[14px] lg:w-[11.2px] md:w-[8.4px]
-          w-[7px] h-[7px] "
+          w-[9px] h-[12px] "
           raw
         />
       </div>
@@ -46,7 +46,7 @@ const LevelBar = ({ level }) => {
           w-[7px] h-[7px] "
           raw
         />
-        LEVEL {level + 1}
+        {level + 1}
       </div>
     </div>
   );

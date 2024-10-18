@@ -33,7 +33,7 @@ import {
   FaLayerGroup,
   FaBell
 } from 'react-icons/fa';
-import { FaPencil, FaShield } from 'react-icons/fa6';
+import { FaPencil, FaShield, FaCoins, FaBtc, FaEthereum, FaVault } from 'react-icons/fa6';
 import {
   MdCalendarMonth,
   MdCheckBox,
@@ -42,12 +42,17 @@ import {
 } from 'react-icons/md';
 import { IoIosArrowForward, IoMdClose } from 'react-icons/io';
 import { IoDiamond, IoClose, IoEyeOff } from 'react-icons/io5';
+import { BsCurrencyDollar } from 'react-icons/bs';
+
 import { TfiNewWindow } from 'react-icons/tfi';
 
 export const Icons = {
   layerGroup: FaLayerGroup,
   dice: FaDice,
   infoCircle: FaInfoCircle,
+  dollarIcon: BsCurrencyDollar,
+  BtcIcon: FaBtc,
+  EthIcon: FaEthereum,
   openInNew: TfiNewWindow,
   bitcoin: BsCurrencyBitcoin,
   updown: PiArrowsDownUpFill,
@@ -65,8 +70,10 @@ export const Icons = {
   Close: FaTimes,
   angleDown: FaAngleDown,
   angleUp: FaAngleUp,
+  YieldIcon: FaVault,
   Circle: FaCircle,
   ShieldIcon: FaShield,
+  CoinIcon: FaCoins,
   CrownIcon: FaCrown,
   SyncIcon: FaSyncAlt,
   XMarkIcon: IoClose,
