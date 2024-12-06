@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'; // Import useEffect
 import { useAuth } from '../../../providers/AuthProvider';
 import Button from '../../../shared/Button';
 import Modal from '../../../shared/Modal';
@@ -7,18 +8,27 @@ import SignInForm from '../SignInForm';
 import SignUpForm from '../SignUpForm';
 import SocialButtons from '../SocialButtons';
 
-const SignModal = () => {
+interface SignModalProps {
+  isVisible: boolean;
+  setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  initialTab?: 'signin' | 'signup'; // Optional prop to set the initial tab
+}
+
+const SignModal: React.FC<SignModalProps> = ({ isVisible, setIsVisible, initialTab = 'signin' }) => {
   const { tab, setTab } = useAuth();
+
+  useEffect(() => {
+    if (isVisible) {
+      setTab(initialTab); // Ensure this is set correctly
+    }
+  }, [isVisible, initialTab]);
   return (
     <Modal
       classNames="lg:w-[560px] md:w-[400px] !gap-0 w-[95%]"
-      onClose={() => {
-        return;
-      }}
+      onClose={() => setIsVisible(false)}
       showCloseButton
       title="Sign"
-      isVisible={true}
-      isSign
+      isVisible={isVisible}
     >
       <div
         className="flex flex-col

@@ -1,7 +1,7 @@
 import Button from '../../../shared/Button';
 import Form from '../../../shared/Form';
 import { validation } from './validation';
-import TextInput from '../../SignPage/TextInput';
+import TextInput from '../../LandingPage/TextInput';
 import { useState } from 'react';
 
 const PasswordForm = () => {
