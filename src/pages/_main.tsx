@@ -6,7 +6,7 @@ import UserStats from './userStats';
 
 
 function PrivateRoute({ element }) {
-  const authToken = localStorage.getItem("token");
+  const authToken = localStorage.getItem("authToken");
   if (!authToken) {
     return <Navigate to="/" replace />;
   }

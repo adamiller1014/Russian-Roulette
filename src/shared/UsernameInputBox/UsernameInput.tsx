@@ -15,7 +15,7 @@ const UsernameInput = ({ value, onChange }) => {
         id="Username"
         type="text"
         name="Username"
-        className="whsOnd zHQkBf border-none outline-none bg-transparent text-center w-full rounded-md px-4 h-12 text-base"
+        className="text-white border-none outline-none bg-transparent text-center w-full rounded-md px-4 h-12 text-base"
         placeholder=""
         value={value}
         onChange={onChange}

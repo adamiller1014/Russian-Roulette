@@ -14,8 +14,8 @@ const SignInForm = () => {
     try {
       // Send email and password in the request body
       const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
-        email: userEmail, // Ensure to send 'email' instead of 'username'
-        password: userPassword, // 'password' as required by backend
+        email: userEmail, 
+        password: userPassword, 
       });
 
       if (response.status === 200) {
